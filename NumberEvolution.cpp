@@ -2,10 +2,13 @@
 //
 
 #include <iostream>
+#include<string>
+#include "Environment.cpp"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+   // Environment environment;
+   // environment.InitEnvironment();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

@@ -17,9 +17,9 @@ public:
 
 	Environment();
 
-	int environmentGrid[GRID_WIDTH][GRID_HEIGHT];
+	std::string environmentGrid[GRID_WIDTH][GRID_HEIGHT];
 
 	void InitEnvironment(); 
-	void UpdateEnivronment();
+	void UpdateEnivronment(int posX, int posY);
 	void PrintEnvironment();
 };

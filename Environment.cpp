@@ -10,7 +10,7 @@
 //defines
 
 Environment::Environment() {
-	std::cout << "Testing" << std::endl;
+	std::cout << "Test" << std::endl;
 }
 
 
@@ -20,7 +20,7 @@ Environment::Environment() {
 void Environment::InitEnvironment() {
 	for (int i = 0; i < GRID_WIDTH; ++i) {
 		for (int j = 0; j < GRID_WIDTH; ++j) {
-			environmentGrid[i][j] = 0;
+			environmentGrid[i][j] = "0";
 		}
 	}
 	Environment::PrintEnvironment();
@@ -40,3 +40,5 @@ void Environment::PrintEnvironment() {
 		}
 	}
 }
+
+//void Environment::UpdateEnivronment()
