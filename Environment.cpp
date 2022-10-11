@@ -39,6 +39,21 @@ void Environment::PrintEnvironment() {
 			std::cout << environmentGrid[i][j] << " ";
 		}
 	}
+
+	std::cout << std::endl;
+	std::cout << "***************************************************************************************" << std::endl;
 }
 
-//void Environment::UpdateEnivronment()
+/*
+	Update the value at a position on the grid with the given value, and then print the grid using PrintEnvironment()
+
+	Parameters:
+		-posX: the row being accessed (from 0 to (#rows - 1))
+		-posY: the column being accessed (from 0 to (#col - 1))
+		-updateValue: the value for the specified location to be updated to
+*/
+void Environment::UpdateEnivronment(int posX, int posY, std::string updateValue) {
+	environmentGrid[posX][posY] = updateValue;
+
+	Environment::PrintEnvironment();
+}
