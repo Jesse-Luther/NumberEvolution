@@ -1,4 +1,5 @@
-#/*
+#pragma once
+/*
 	Filename: Environment.h
 	Description: Contains functions to print and update the environment
 	that the entities will exist in
