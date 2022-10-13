@@ -30,7 +30,8 @@ void Entity::UpdateEntityPosition(char positionChange, int amount) {
 	else if (positionChange == 'y') {
 		entityPosition[1] += amount;
 	}
-		//make the final else throw an exception instead of stating error
+	
+	//TODO: make the final else throw an exception instead of stating an error
 	else {
 		std::cout << "An improper position type has been provided";
 	}
