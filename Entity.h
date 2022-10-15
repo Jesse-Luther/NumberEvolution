@@ -11,9 +11,9 @@ public:
 	Entity(int posX, int posY);
 
 	//int[] GetEntityPosition();
-	void SetEntityPosition(int posX, int posY); 
+	void SetEntityPosition(const int posX, const int posY); 
 
-	void UpdateEntityPosition(char positionChange, int amount);
+	void UpdateEntityPosition(const char positionChange, const int amount);
 	
 	
 

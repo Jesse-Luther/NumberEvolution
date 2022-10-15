@@ -9,7 +9,24 @@
 
 //defines
 
-Entity::Entity(int posX, int posY) : entityPosition{ posX, posY } {
+Entity::Entity(const int posX, const int posY) : entityPosition{ posX, posY } {
+	
+	try {
+		if (posX < 0 || posX > 9) {
+			throw posX;
+		}
+
+		if (posY < 0 || posY > 9) {
+			throw posY;
+		}
+	}
+
+	catch (const int pos) {
+		std::cout << "Error: Positional value outside of the range 0 <= pos <= 9 was used." << std::endl;
+		std::cout << "Value that caused error is " << pos << std::endl;
+
+	}
+
 	std::cout << "Entity Created";
 }
 
@@ -23,7 +40,7 @@ Entity::Entity(int posX, int posY) : entityPosition{ posX, posY } {
 		-posX: X position on the grid environment (in other words, row number)
 		-posY: Y position on the grid environment (in other words, column number)
 */
-void Entity::SetEntityPosition(int posX, int posY) {
+void Entity::SetEntityPosition(const int posX, const int posY) {
 	entityPosition[0] = posX;
 	entityPosition[1] = posY;
 }
@@ -40,7 +57,7 @@ void Entity::SetEntityPosition(int posX, int posY) {
 		-amount: the amount the prior value is being changed by (can be positive or 
 		negative
 */
-void Entity::UpdateEntityPosition(char positionChange, int amount) {
+void Entity::UpdateEntityPosition(const char positionChange, const int amount) {
 	if (positionChange == 'x') {
 		entityPosition[0] += amount;
 	}

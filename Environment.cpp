@@ -52,7 +52,7 @@ void Environment::PrintEnvironment() {
 		-posY: the column being accessed (from 0 to (#col - 1))
 		-updateValue: the value for the specified location to be updated to
 */
-void Environment::UpdateEnivronment(int posX, int posY, std::string updateValue) {
+void Environment::UpdateEnivronment(const int posX, const int posY, const std::string updateValue) {
 	environmentGrid[posX][posY] = updateValue;
 
 	Environment::PrintEnvironment();
