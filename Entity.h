@@ -20,7 +20,7 @@ public:
 private:
 
 	//{x position, y position}
-	int entityPosition[2] = { 0,0 };
+	int entityPosition[2];
 	
 
 };

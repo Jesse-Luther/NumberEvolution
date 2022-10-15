@@ -9,7 +9,7 @@
 
 //defines
 
-Entity::Entity(int posX, int posY) {
+Entity::Entity(int posX, int posY) : entityPosition{ posX, posY } {
 	std::cout << "Entity Created";
 }
 
