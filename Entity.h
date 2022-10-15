@@ -9,13 +9,17 @@ class Entity {
 public:
 
 	Entity(int posX, int posY);
-	void UpdateEntityPosition(char positionChange, int amount);
+
 	//int[] GetEntityPosition();
-	//void SetEntityPosition(int posX, int posY); used for placing directly on the board onces instantiated
+	void SetEntityPosition(int posX, int posY); 
+
+	void UpdateEntityPosition(char positionChange, int amount);
+	
 	
 
 private:
 
+	//{x position, y position}
 	int entityPosition[2] = { 0,0 };
 	
 

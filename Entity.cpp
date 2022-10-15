@@ -13,6 +13,23 @@ Entity::Entity(int posX, int posY) {
 	std::cout << "Entity Created";
 }
 
+
+/*
+	Sets the entity's position to the specified coordinates. Used when instantiating 
+	an entity object to set its initial position, and will possible be used in other 
+	instances
+
+	Parameters:
+		-posX: X position on the grid environment (in other words, row number)
+		-posY: Y position on the grid environment (in other words, column number)
+*/
+void Entity::SetEntityPosition(int posX, int posY) {
+	entityPosition[0] = posX;
+	entityPosition[1] = posY;
+}
+
+
+
 /*
 	Allows the entity to move in a single direction (up/down = X, left/right = Y)
 	by a specified amount. Notably, downards is positive X, while upwards is negative X. 
@@ -36,3 +53,4 @@ void Entity::UpdateEntityPosition(char positionChange, int amount) {
 		std::cout << "An improper position type has been provided";
 	}
 }
+
