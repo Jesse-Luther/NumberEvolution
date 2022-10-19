@@ -3,12 +3,13 @@
 
 #include <iostream>
 #include<string>
+#include<vector>
 #include "Environment.cpp"
 
 int main()
 {
-   // Environment environment;
-   // environment.InitEnvironment();
+   Environment environment(3,3);
+   environment.InitEnvironment();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

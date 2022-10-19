@@ -9,7 +9,7 @@
 
 //defines
 
-Environment::Environment(const int width, const int height) :  {
+Environment::Environment(const int width, const int height) : GRID_WIDTH{ width }, GRID_HEIGHT{ height }{
 	try {
 		if (width <= 0) {
 			throw width;
@@ -51,9 +51,9 @@ void Environment::PrintEnvironment() {
 			std::cout << std::endl;
 		}
 		
-		std::cout << environmentGrid[i];
+		std::cout << environmentGrid[i] << " ";
 
-		if (j >= GRID_WIDTH) {
+		if (j >= (GRID_WIDTH - 1)) {
 			j = -1;
 		}
 		
