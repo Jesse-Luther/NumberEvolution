@@ -15,8 +15,8 @@ public:
 	Environment();
 
 	//different grid sizes
-	const int GRIDW_10X10 = 10;
-	const int GRIDH_10X10 = 10;
+	const int GRID_WIDTH = 10;
+	const int GRID_HEIGHT = 10;
 
 	std::vector<std::string> environmentGrid;
 

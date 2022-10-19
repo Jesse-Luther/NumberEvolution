@@ -18,11 +18,12 @@ Environment::Environment() {
 	Generate initial grid and set all values to 0. Then, print all values.
 */
 void Environment::InitEnvironment() {
-	for (int i = 0; i < GRID_WIDTH; ++i) {
-		for (int j = 0; j < GRID_WIDTH; ++j) {
-			environmentGrid[i][j] = "0";
-		}
+	int totalGridSize = this->GRID_WIDTH * this->GRID_HEIGHT;
+
+	for(int i = 0; i < totalGridSize; ++i){
+		environmentGrid.push_back("0");
 	}
+
 	Environment::PrintEnvironment();
 }
 
