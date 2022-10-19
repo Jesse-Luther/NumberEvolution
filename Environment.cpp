@@ -68,13 +68,21 @@ void Environment::PrintEnvironment() {
 	Update the value at a position on the grid with the given value, and then print the grid using PrintEnvironment()
 
 	Parameters:
-		-posX: the row being accessed (from 0 to (#rows - 1))
-		-posY: the column being accessed (from 0 to (#col - 1))
+		-posX: the index position along the width being accessed (from 0 to (WIDTH - 1))
+		-posY: the index position along the height being accessed (from 0 to (HEIGHT - 1))
 		-updateValue: the value for the specified location to be updated to
-
+*/
 void Environment::UpdateEnivronment(const int posX, const int posY, const std::string updateValue) {
-	environmentGrid[posX][posY] = updateValue;
+	//ensure idex value isn't greater than the length/height of the grid
+	if (posX >= this->GRID_WIDTH || posY >= this->GRID_HEIGHT || posX < 0 || posY < 0) {
+		std::cout << "ERROR: invalid positional value was given." << std::endl;
+		std::cout << "Function: Environment::UpdateEnvironment" << std::endl;
+		return;
+	}
+	
+	int updateLocation = (posY * this->GRID_WIDTH) + posX;
+	
+	environmentGrid[updateLocation] = updateValue;
 
 	Environment::PrintEnvironment();
 }
-*/

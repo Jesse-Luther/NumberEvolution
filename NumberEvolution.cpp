@@ -8,8 +8,9 @@
 
 int main()
 {
-   Environment environment(3,3);
+   Environment environment(3,10);
    environment.InitEnvironment();
+   environment.UpdateEnivronment(0, 0, "F");
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
