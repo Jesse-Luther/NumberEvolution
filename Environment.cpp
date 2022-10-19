@@ -9,7 +9,7 @@
 
 //defines
 
-Environment::Environment(const int width, const int height) {
+Environment::Environment(const int width, const int height) :  {
 	try {
 		if (width <= 0) {
 			throw width;
@@ -44,13 +44,20 @@ void Environment::InitEnvironment() {
 	Print each value of the grid environment in proper format.
 */
 void Environment::PrintEnvironment() {
-	for (int i = 0; i < GRID_WIDTH; ++i) {
+	int totalGridSize = this->GRID_WIDTH * this->GRID_HEIGHT;
 
-		std::cout << std::endl;
-
-		for (int j = 0; j < GRID_WIDTH; ++j) {
-			std::cout << environmentGrid[i][j] << " ";
+	for (int i = 0, j = 0; i < totalGridSize; ++i, ++j) {
+		if (j == 0) {
+			std::cout << std::endl;
 		}
+		
+		std::cout << environmentGrid[i];
+
+		if (j >= GRID_WIDTH) {
+			j = -1;
+		}
+		
+		
 	}
 
 	std::cout << std::endl;
@@ -64,9 +71,10 @@ void Environment::PrintEnvironment() {
 		-posX: the row being accessed (from 0 to (#rows - 1))
 		-posY: the column being accessed (from 0 to (#col - 1))
 		-updateValue: the value for the specified location to be updated to
-*/
+
 void Environment::UpdateEnivronment(const int posX, const int posY, const std::string updateValue) {
 	environmentGrid[posX][posY] = updateValue;
 
 	Environment::PrintEnvironment();
 }
+*/
