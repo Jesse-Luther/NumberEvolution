@@ -8,21 +8,23 @@ class Entity {
 
 public:
 
-	Entity(int posX, int posY);
+	Entity(int posX, int posY, Environment environment);
 
-	//bool IsValid(...)
-	// Enitity~()
+	bool IsValidPosition(int posX, int posY, Environment environment);
 	//int[] GetEntityPosition();
 	void SetEntityPosition(const int posX, const int posY); 
 
 	void UpdateEntityPosition(const char positionChange, const int amount);
 	
 	
+	
 
 private:
 
 	//{x position, y position}
-	int entityPosition[2];
+	int entityPositionX;
+	int entityPositionY;
+	
 	
 
 };

@@ -9,25 +9,38 @@
 
 //defines
 
-Entity::Entity(const int posX, const int posY) : entityPosition{ posX, posY } {
+Entity::Entity(const int posX, const int posY, Environment environment) : entityPositionX{ posX }, entityPositionY{ posY } {
 	
 	try {
-		if (posX < 0 || posX > 9) {
+		if (IsValidPosition(posX, posY, environment) == false) {
 			throw posX;
 		}
 
-		if (posY < 0 || posY > 9) {
-			throw posY;
-		}
 	}
+
 
 	catch (const int pos) {
-		std::cout << "Error: Positional value outside of the range 0 <= pos <= 9 was used." << std::endl;
-		std::cout << "Value that caused error is " << pos << std::endl;
-
+		std::cout << "Error: Positional value outside of the range 0 <= pos <= Width/Height was used." << std::endl;
 	}
 
-	std::cout << "Entity Created";
+	std::cout << "Entity Created";\
+
+}
+
+/*
+
+*/
+bool Entity::IsValidPosition(int posX, int posY, Environment environment) {
+	if (posX < 0 || posX >= environment.GRID_WIDTH) {
+		std::cout << "X position error" << std::endl;
+		return false;
+	}
+	if (posY < 0 || posY >= environment.GRID_HEIGHT) {
+		std::cout << "Y position error" << std::endl;
+		return false;
+	}
+
+	return true;
 }
 
 
@@ -37,12 +50,12 @@ Entity::Entity(const int posX, const int posY) : entityPosition{ posX, posY } {
 	Parameters:
 		-posX: X position on the grid environment (in other words, row number)
 		-posY: Y position on the grid environment (in other words, column number)
-*/
+
 void Entity::SetEntityPosition(const int posX, const int posY) {
 	entityPosition[0] = posX;
 	entityPosition[1] = posY;
 }
-
+*/
 
 
 /*
@@ -54,7 +67,7 @@ void Entity::SetEntityPosition(const int posX, const int posY) {
 		changed
 		-amount: the amount the prior value is being changed by (can be positive or 
 		negative
-*/
+
 void Entity::UpdateEntityPosition(const char positionChange, const int amount) {
 	if (positionChange == 'x') {
 		entityPosition[0] += amount;
@@ -68,4 +81,4 @@ void Entity::UpdateEntityPosition(const char positionChange, const int amount) {
 		std::cout << "An improper position type has been provided";
 	}
 }
-
+*/
