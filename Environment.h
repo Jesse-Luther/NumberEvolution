@@ -12,7 +12,7 @@ class Environment {
 
 public:
 
-	Environment();
+	Environment(const int width, const int height);
 
 	//different grid sizes
 	const int GRID_WIDTH = 10;

@@ -9,8 +9,20 @@
 
 //defines
 
-Environment::Environment() {
-	std::cout << "Test" << std::endl;
+Environment::Environment(const int width, const int height) {
+	try {
+		if (width <= 0) {
+			throw width;
+		}
+
+		if (height <= 0) {
+			throw height;
+		}
+	}
+
+	catch (const int size) {
+		std::cout << "ERROR: size value less than 1 used. The invalid size used was " << size << "." << std::endl;
+	}
 }
 
 
