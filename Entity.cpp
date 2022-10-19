@@ -32,9 +32,7 @@ Entity::Entity(const int posX, const int posY) : entityPosition{ posX, posY } {
 
 
 /*
-	Sets the entity's position to the specified coordinates. Used when instantiating 
-	an entity object to set its initial position, and will possible be used in other 
-	instances
+	Sets the entity's position to the specified coordinates. 
 
 	Parameters:
 		-posX: X position on the grid environment (in other words, row number)

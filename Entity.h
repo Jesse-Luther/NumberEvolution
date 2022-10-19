@@ -10,6 +10,8 @@ public:
 
 	Entity(int posX, int posY);
 
+	//bool IsValid(...)
+	// Enitity~()
 	//int[] GetEntityPosition();
 	void SetEntityPosition(const int posX, const int posY); 
 
