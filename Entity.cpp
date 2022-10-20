@@ -43,6 +43,13 @@ bool Entity::IsValidPosition(int posX, int posY, Environment environment) {
 	return true;
 }
 
+int Entity::GetEntityXPosition() {
+	return entityPositionX;
+}
+
+int Entity::GetEntityYPosition() {
+	return entityPositionY;
+}
 
 /*
 	Sets the entity's position to the specified coordinates. 
@@ -67,18 +74,8 @@ void Entity::SetEntityPosition(const int posX, const int posY) {
 		changed
 		-amount: the amount the prior value is being changed by (can be positive or 
 		negative
-
-void Entity::UpdateEntityPosition(const char positionChange, const int amount) {
-	if (positionChange == 'x') {
-		entityPosition[0] += amount;
-	}
-	else if (positionChange == 'y') {
-		entityPosition[1] += amount;
-	}
-	
-	//TODO: make the final else throw an exception instead of stating an error
-	else {
-		std::cout << "An improper position type has been provided";
-	}
-}
 */
+
+//void Entity::EntityNormalMovement(const char positionChange) {
+	
+//}

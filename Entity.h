@@ -11,10 +11,12 @@ public:
 	Entity(int posX, int posY, Environment environment);
 
 	bool IsValidPosition(int posX, int posY, Environment environment);
-	//int[] GetEntityPosition();
-	void SetEntityPosition(const int posX, const int posY); 
+	int GetEntityXPosition();
+	int GetEntityYPosition();
+	//void SetEntityPosition(const int posX, const int posY); 
+	//void EntityRandomMovement?
 
-	void UpdateEntityPosition(const char positionChange, const int amount);
+	//void EntityNormalMovement(const char positionChange, const int amount);
 	
 	
 	
