@@ -10,7 +10,7 @@ public:
 
 	Entity(int posX, int posY, Environment environment);
 
-	bool IsValidPosition(int posX, int posY, Environment environment);
+	bool IsValidPosition(int posX, int posY);
 	int GetEntityXPosition();
 	int GetEntityYPosition();
 	//void SetEntityPosition(const int posX, const int posY); 
@@ -26,6 +26,7 @@ private:
 	//{x position, y position}
 	int entityPositionX;
 	int entityPositionY;
+	Environment environment;
 	
 	
 
