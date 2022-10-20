@@ -5,12 +5,22 @@
 #include<string>
 #include<vector>
 #include "Environment.cpp"
+#include "Entity.cpp"
 
 int main()
 {
-   Environment environment(3,10);
+   Environment environment(10, 10);
    environment.InitEnvironment();
    environment.UpdateEnivronment(0, 0, "F");
+   Entity entity1(3, 3, environment);
+   std::cout << "Entity X pos is: " << entity1.GetEntityXPosition() << std::endl;
+   std::cout << "Entity Y pos is: " << entity1.GetEntityYPosition() << std::endl;
+
+   entity1.EntityNormalMovement('y', -1);
+
+   std::cout << "Entity X pos is: " << entity1.GetEntityXPosition() << std::endl;
+   std::cout << "Entity Y pos is: " << entity1.GetEntityYPosition() << std::endl;
+   
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

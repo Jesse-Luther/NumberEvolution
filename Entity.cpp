@@ -66,9 +66,41 @@ void Entity::SetEntityPosition(const int posX, const int posY) {
 
 
 /*
-	
+	Allows the entity to move a single space in a single direction, given the movement is valid
+	If it successfully moves, it returns 1. Otherwise, if it was unable to move, it returns 0.
+
+	Parameters:
+		-positionChange: either 'x' or 'y', depending on if the width or height poistion is
+		changing
+		-direction: either 1 or -1, indicating a positve or negative direction. Note, upwards
+		is considered negative y, while downwards is positive y
 */
 
-//void Entity::EntityNormalMovement(const char positionChange) {
-	
-//}
+int Entity::EntityNormalMovement(const char positionChange, const int direction) {
+	int x = GetEntityXPosition();
+	int y = GetEntityYPosition();
+
+	if (positionChange == 'x') {
+		x = x + direction;
+		if (IsValidPosition(x, y) == false) {
+			std::cout << "That is not a valid movement" << std::endl;
+			return 0;
+		}
+
+		else {
+			entityPositionX = x;
+		}
+	}
+
+	if (positionChange == 'y') {
+		y = y + direction;
+		if (IsValidPosition(x, y) == false) {
+			std::cout << "That is not a valid movement" << std::endl;
+			return 0;
+		}
+
+		else {
+			entityPositionY = y;
+		}
+	}
+}

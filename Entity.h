@@ -16,7 +16,7 @@ public:
 	//void SetEntityPosition(const int posX, const int posY); 
 	//void EntityRandomMovement?
 
-	//void EntityNormalMovement(const char positionChange, const int amount);
+	int EntityNormalMovement(const char positionChange, const int direction);
 	
 	
 	
