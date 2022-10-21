@@ -88,7 +88,8 @@ int Entity::EntityNormalMovement(const char positionChange, const int direction)
 		}
 
 		else {
-			entityPositionX = x;
+			this -> entityPositionX = x;
+			return 1;
 		}
 	}
 
@@ -100,7 +101,50 @@ int Entity::EntityNormalMovement(const char positionChange, const int direction)
 		}
 
 		else {
-			entityPositionY = y;
+			this -> entityPositionY = y;
+			return 1;
 		}
 	}
+}
+
+/*
+	Generates a random positional value(x or y), and a random direction(1, -1)
+	for the EntityNormalMovement function, and then calls that function with the randomly 
+	generated values. Returns 0 if the movement failed, and 1 if it succeeded.
+*/
+int Entity::EntityRandomMovement() {
+	srand(time(0));
+
+	char positionType;
+
+	int rand1 = rand() % 2;
+	int rand2 = rand() % 2;
+	
+	//determine random position type (x or y)
+	if (rand1 == 0) {
+		positionType = 'x';
+		std::cout << "A" << std::endl;
+	}
+	else if (rand1 == 1) {
+		positionType = 'y';
+		std::cout << "B" << std::endl;
+	}
+	else {
+		std::cout << "Error: Failure in function Entity::EntityRandomMovement()" << std::endl;
+		return -1;
+	}
+
+	//determine direction (1 or -1)
+	if (rand2 == 0) {
+		std::cout << "C" << std::endl;
+		rand2 = -1;
+	}
+
+	//make random movement, with movementIndicator to check if it was successful
+	std::cout << "Rand1 is " << rand1 << " and Rand2 is " << rand2 << "." << std::endl;
+	int movementIndicator = EntityNormalMovement(positionType, rand2);
+	
+	return movementIndicator;
+
+
 }
