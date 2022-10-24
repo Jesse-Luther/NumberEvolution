@@ -7,9 +7,13 @@
 
 //includes
 
+struct GridDimensions {
+	//different grid sizes
+	const int GRID_WIDTH = 10;
+	const int GRID_HEIGHT = 10;
+};
 
 class Environment {
-
 public:
 
 	Environment(const int width, const int height);
@@ -22,12 +26,12 @@ public:
 	//std::string getValue(int posX, posY);
 	//int getGridWidth();
 	//int getGridHeight();
+	GridDimensions getGridDimensions();
 
 private:
-	struct GridDimensions {
-		//different grid sizes
-		const int GRID_WIDTH = 10;
-		const int GRID_HEIGHT = 10;
-	}gridDimensions;
+
+
+	GridDimensions gridDimensions;
+
 
 };

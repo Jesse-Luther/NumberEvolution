@@ -6,20 +6,26 @@
 #include<vector>
 #include "Environment.cpp"
 #include "Entity.cpp"
+#include <cstdlib>
+#include<time.h>
 
 int main()
 {
-   Environment environment(10, 10);
+   Environment environment(8, 4);
    environment.InitEnvironment();
    environment.UpdateEnivronment(0, 0, "F");
-   Entity entity1(3, 3, environment);
+   Entity entity1(0, 0, environment);
    std::cout << "Entity X pos is: " << entity1.GetEntityXPosition() << std::endl;
    std::cout << "Entity Y pos is: " << entity1.GetEntityYPosition() << std::endl;
+   std::cout << "Grid Width and Height is: " << environment.getGridDimensions().GRID_WIDTH << ", " << environment.getGridDimensions().GRID_HEIGHT << std::endl;
 
-   entity1.EntityNormalMovement('y', -1);
-
-   std::cout << "Entity X pos is: " << entity1.GetEntityXPosition() << std::endl;
-   std::cout << "Entity Y pos is: " << entity1.GetEntityYPosition() << std::endl;
+ 
+   
+   int a = entity1.EntityRandomMovement();
+   std::cout << "Movement was " << a << std::endl;
+   int posX1 = entity1.GetEntityXPosition();
+   int posY1 = entity1.GetEntityYPosition();
+   std::cout << "X pos: " << posX1 << "Y pos: " << posY1;
    
 }
 
