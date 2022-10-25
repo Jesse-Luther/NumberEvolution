@@ -31,11 +31,11 @@ Entity::Entity(const int posX, const int posY, Environment environment) : entity
 
 */
 bool Entity::IsValidPosition(int posX, int posY) {
-	if (posX < 0 || posX >= this->environment.getGridDimensions().GRID_WIDTH) {
+	if (posX < 0 || posX >= this->environment.GetGridDimensions().GRID_WIDTH) {
 		std::cout << "X position error" << std::endl;
 		return false;
 	}
-	if (posY < 0 || posY >= this->environment.getGridDimensions().GRID_HEIGHT) {
+	if (posY < 0 || posY >= this->environment.GetGridDimensions().GRID_HEIGHT) {
 		std::cout << "Y position error" << std::endl;
 		return false;
 	}

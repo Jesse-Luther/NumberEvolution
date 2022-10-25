@@ -30,7 +30,7 @@ Environment::Environment(const int width, const int height) : gridDimensions{wid
 	Generate initial grid and set all values to 0. Then, print all values.
 */
 void Environment::InitEnvironment() {
-	int totalGridSize = this->getGridDimensions().GRID_WIDTH * this->getGridDimensions().GRID_HEIGHT;
+	int totalGridSize = this->GetGridDimensions().GRID_WIDTH * this->GetGridDimensions().GRID_HEIGHT;
 
 	for(int i = 0; i < totalGridSize; ++i){
 		environmentGrid.push_back("0");
@@ -44,7 +44,7 @@ void Environment::InitEnvironment() {
 	Print each value of the grid environment in proper format.
 */
 void Environment::PrintEnvironment() {
-	int totalGridSize = this->getGridDimensions().GRID_WIDTH * this->getGridDimensions().GRID_HEIGHT;
+	int totalGridSize = this->GetGridDimensions().GRID_WIDTH * this->GetGridDimensions().GRID_HEIGHT;
 
 	for (int i = 0, j = 0; i < totalGridSize; ++i, ++j) {
 		if (j == 0) {
@@ -53,7 +53,7 @@ void Environment::PrintEnvironment() {
 		
 		std::cout << environmentGrid[i] << " ";
 
-		if (j >= (getGridDimensions().GRID_WIDTH - 1)) {
+		if (j >= (GetGridDimensions().GRID_WIDTH - 1)) {
 			j = -1;
 		}
 		
@@ -74,31 +74,32 @@ void Environment::PrintEnvironment() {
 */
 void Environment::UpdateEnivronment(const int posX, const int posY, const std::string updateValue) {
 	//ensure idex value isn't greater than the length/height of the grid
-	if (posX >= this->getGridDimensions().GRID_WIDTH || posY >= this->getGridDimensions().GRID_HEIGHT || posX < 0 || posY < 0) {
+	if (posX >= this->GetGridDimensions().GRID_WIDTH || posY >= this->GetGridDimensions().GRID_HEIGHT || posX < 0 || posY < 0) {
 		std::cout << "ERROR: invalid positional value was given." << std::endl;
 		std::cout << "Function: Environment::UpdateEnvironment" << std::endl;
 		return;
 	}
 	
-	int updateLocation = (posY * this->getGridDimensions().GRID_WIDTH) + posX;
+	int updateLocation = (posY * this->GetGridDimensions().GRID_WIDTH) + posX;
 	
 	environmentGrid[updateLocation] = updateValue;
 
 	Environment::PrintEnvironment();
 }
 
-/*
-int Environment::getGridWidth() {
-	return gridDimensions.GRID_WIDTH;
-}
-
-int Environment::getGridHeight() {
-	return gridDimensions.GRID_HEIGHT;
-}
-
-*/
-
-
-GridDimensions Environment::getGridDimensions() {
+GridDimensions Environment::GetGridDimensions() {
 	return gridDimensions;
+}
+
+/*
+	Retrieve the value at a valid location on the grid.
+
+	Parameters:
+		-posX: the index position along the width being accessed (from 0 to (WIDTH - 1))
+		-posY: the index position along the height being accessed (from 0 to (HEIGHT - 1))
+*/
+std::string Environment::GetValue(int posX, int posY) {
+	int valueLocation = (posY * this->GetGridDimensions().GRID_WIDTH) + posX;
+
+	return environmentGrid[valueLocation];
 }

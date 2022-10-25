@@ -23,10 +23,8 @@ public:
 	void InitEnvironment(); 
 	void UpdateEnivronment(const int posX, const int posY, const std::string updateValue);
 	void PrintEnvironment();
-	//std::string getValue(int posX, posY);
-	//int getGridWidth();
-	//int getGridHeight();
-	GridDimensions getGridDimensions();
+	std::string GetValue(int posX, int posY);
+	GridDimensions GetGridDimensions();
 
 private:
 
