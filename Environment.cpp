@@ -6,6 +6,7 @@
 
 //includes
 #include "Environment.h"
+#include<assert.h>
 
 //defines
 
@@ -93,11 +94,8 @@ bool Environment::IsValidPosition(int posX, int posY) {
 */
 void Environment::UpdateEnivronment(const int posX, const int posY, const std::string updateValue) {
 	//ensure idex value isn't greater than the length/height of the grid
-	if (posX >= this->GetGridDimensions().GRID_WIDTH || posY >= this->GetGridDimensions().GRID_HEIGHT || posX < 0 || posY < 0) {
-		std::cout << "ERROR: invalid positional value was given." << std::endl;
-		std::cout << "Function: Environment::UpdateEnvironment" << std::endl;
-		return;
-	}
+	assert(IsValidPosition(posX, posY) == true);
+	
 	
 	int updateLocation = (posY * this->GetGridDimensions().GRID_WIDTH) + posX;
 	
@@ -118,6 +116,8 @@ GridDimensions Environment::GetGridDimensions() {
 		-posY: the index position along the height being accessed (from 0 to (HEIGHT - 1))
 */
 std::string Environment::GetValue(int posX, int posY) {
+	assert(IsValidPosition(posX, posY) == true);
+	
 	int valueLocation = (posY * this->GetGridDimensions().GRID_WIDTH) + posX;
 
 	return environmentGrid[valueLocation];
