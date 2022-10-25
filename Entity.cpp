@@ -6,6 +6,9 @@
 
 //includes
 #include "Entity.h"
+#include <cstdlib>
+#include<time.h>
+
 
 //defines
 

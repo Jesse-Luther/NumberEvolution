@@ -8,6 +8,7 @@
 #include "Environment.h"
 #include<assert.h>
 
+
 //defines
 
 Environment::Environment(const int width, const int height) : gridDimensions{width, height} {

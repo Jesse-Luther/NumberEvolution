@@ -2,23 +2,22 @@
 //
 
 #include <iostream>
-#include<string>
-#include<vector>
 #include "Environment.cpp"
 #include "Entity.cpp"
-#include <cstdlib>
-#include<time.h>
+
+
 
 int main()
 {
+
    Environment environment(8, 4);
    environment.InitEnvironment();
    environment.UpdateEnivronment(0, 0, "F");
    Entity entity1(0, 0, environment);
    std::cout << "Entity X pos is: " << entity1.GetEntityXPosition() << std::endl;
    std::cout << "Entity Y pos is: " << entity1.GetEntityYPosition() << std::endl;
-   std::cout << "Grid Width and Height is: " << environment.getGridDimensions().GRID_WIDTH << ", " << environment.getGridDimensions().GRID_HEIGHT << std::endl;
-
+   std::cout << "Grid Width and Height is: " << environment.GetGridDimensions().GRID_WIDTH << ", " << environment.GetGridDimensions().GRID_HEIGHT << std::endl;
+   std::cout << "The value at position 0,0 is " << environment.GetValue(0, 0) << std::endl;
  
    
    int a = entity1.EntityRandomMovement();
