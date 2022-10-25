@@ -63,6 +63,25 @@ void Environment::PrintEnvironment() {
 	std::cout << std::endl;
 	std::cout << "***************************************************************************************" << std::endl;
 }
+/*
+	Determine if a given position exists on the current environment grid
+
+		Parameters:
+		-posX: the index position along the width being accessed (from 0 to (WIDTH - 1))
+		-posY: the index position along the height being accessed (from 0 to (HEIGHT - 1))
+*/
+bool Environment::IsValidPosition(int posX, int posY) {
+	if (posX < 0 || posX >= this->GetGridDimensions().GRID_WIDTH) {
+		std::cout << "X position error" << std::endl;
+		return false;
+	}
+	if (posY < 0 || posY >= this->GetGridDimensions().GRID_HEIGHT) {
+		std::cout << "Y position error" << std::endl;
+		return false;
+	}
+
+	return true;
+}
 
 /*
 	Update the value at a position on the grid with the given value, and then print the grid using PrintEnvironment()

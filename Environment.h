@@ -25,6 +25,7 @@ public:
 	void PrintEnvironment();
 	std::string GetValue(int posX, int posY);
 	GridDimensions GetGridDimensions();
+	bool IsValidPosition(int posX, int posY);
 
 private:
 
