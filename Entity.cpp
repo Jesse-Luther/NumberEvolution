@@ -23,7 +23,7 @@ Entity::Entity(const int posX, const int posY, Environment environment) : entity
 
 
 	catch (const int pos) {
-		std::cout << "Error: Positional value outside of the range 0 <= pos <= Width/Height was used." << std::endl;
+		std::cout << "Error: Positional value outside of the range 0 <= pos <= Width/Height was used, or the location was already occupied" << std::endl;
 	}
 
 	std::cout << "Entity Created";\
@@ -31,7 +31,8 @@ Entity::Entity(const int posX, const int posY, Environment environment) : entity
 }
 
 /*
-
+	Checks if a location is a valid position for an entity to go to. A location is valid if 
+	it is within the confines of the current grid, and is not already occupied by another entity. 
 */
 bool Entity::IsValidPosition(int posX, int posY) {
 	if (posX < 0 || posX >= this->environment.GetGridDimensions().GRID_WIDTH) {
@@ -40,6 +41,12 @@ bool Entity::IsValidPosition(int posX, int posY) {
 	}
 	if (posY < 0 || posY >= this->environment.GetGridDimensions().GRID_HEIGHT) {
 		std::cout << "Y position error" << std::endl;
+		return false;
+	}
+	//get the current grid value at the location. If it contains a digit, it is an entity, 
+	//and therefore, the position is occupied and not a valid place to go
+	if (isdigit(environment.GetValue(posX, posY)[0])) {
+		std::cout << "Location Occupied error" << std::endl;
 		return false;
 	}
 
