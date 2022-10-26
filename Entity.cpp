@@ -12,7 +12,7 @@
 
 //defines
 
-Entity::Entity(const int posX, const int posY, Environment environment) : entityPositionX{ posX }, entityPositionY{ posY }, environment{ environment } {
+Entity::Entity(const int posX, const int posY, Environment environment, std::string id) : entityPositionX{ posX }, entityPositionY{ posY }, environment{ environment } {
 	
 	try {
 		if (IsValidPosition(posX, posY) == false) {
@@ -27,6 +27,7 @@ Entity::Entity(const int posX, const int posY, Environment environment) : entity
 	}
 
 	std::cout << "Entity Created";\
+	
 
 }
 
