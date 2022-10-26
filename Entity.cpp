@@ -12,8 +12,11 @@
 
 //defines
 
-Entity::Entity(const int posX, const int posY, Environment environment, std::string id) : entityPositionX{ posX }, entityPositionY{ posY }, environment{ environment } {
+Entity::Entity(const int posX, const int posY, Environment &environmentO, const std::string id) : entityPositionX{ posX }, entityPositionY{ posY }, environment{ environmentO }, entityID{ id } {
 	
+	//set to false if an erreneous spawn occurs, to prevent the print attempt later on
+	bool spawnErrorCheck = 1;
+
 	try {
 		if (IsValidPosition(posX, posY) == false) {
 			throw posX;
@@ -24,10 +27,14 @@ Entity::Entity(const int posX, const int posY, Environment environment, std::str
 
 	catch (const int pos) {
 		std::cout << "Error: Positional value outside of the range 0 <= pos <= Width/Height was used, or the location was already occupied" << std::endl;
+		spawnErrorCheck = 0;
 	}
 
-	std::cout << "Entity Created";\
+	std::cout << "Entity Created"; \
 	
+	if (spawnErrorCheck == 1) {
+		environmentO.UpdateEnivronment(posX, posY, id);
+	}
 
 }
 

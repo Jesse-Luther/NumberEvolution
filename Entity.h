@@ -12,7 +12,7 @@ class Entity {
 
 public:
 
-	Entity(int posX, int posY, Environment environment, std::string id);
+	Entity(int posX, int posY, Environment &environmentO, const std::string id);
 
 	bool IsValidPosition(int posX, int posY);
 	int GetEntityXPosition();
