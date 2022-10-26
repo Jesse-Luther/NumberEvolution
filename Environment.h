@@ -20,8 +20,6 @@ public:
 
 	Environment(const int width, const int height);
 
-	std::vector<std::string> environmentGrid;
-
 	void InitEnvironment(); 
 	void UpdateEnivronment(const int posX, const int posY, const std::string updateValue);
 	void PrintEnvironment();
@@ -31,7 +29,7 @@ public:
 
 private:
 
-
+	std::vector<std::string> environmentGrid;
 	GridDimensions gridDimensions;
 
 
