@@ -126,6 +126,7 @@ int Entity::EntityNormalMovement(const char positionChange, const int direction)
 		}
 
 		else {
+			environment.UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), "O");
 			this -> entityPositionY = y;
 			environment.UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), GetEntityID());
 			return 1;
