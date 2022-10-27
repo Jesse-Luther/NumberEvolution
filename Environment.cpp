@@ -101,8 +101,6 @@ void Environment::UpdateEnvironment(const int posX, const int posY, const std::s
 	int updateLocation = (posY * this->GetGridDimensions().GRID_WIDTH) + posX;
 	
 	environmentGrid[updateLocation] = updateValue;
-
-	PrintEnvironment();
 }
 
 GridDimensions Environment::GetGridDimensions() {

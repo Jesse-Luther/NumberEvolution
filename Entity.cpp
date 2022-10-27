@@ -34,6 +34,7 @@ Entity::Entity(const int posX, const int posY, Environment &environmentO, const 
 	
 	if (spawnErrorCheck == 1) {
 		environmentO.UpdateEnvironment(posX, posY, id);
+		environmentO.PrintEnvironment();
 	}
 
 }
@@ -114,6 +115,7 @@ int Entity::EntityNormalMovement(const char positionChange, const int direction)
 			environment.UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), "O");
 			this -> entityPositionX = x;
 			environment.UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), GetEntityID());
+			environment.PrintEnvironment();
 			return 1;
 		}
 	}
@@ -129,6 +131,7 @@ int Entity::EntityNormalMovement(const char positionChange, const int direction)
 			environment.UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), "O");
 			this -> entityPositionY = y;
 			environment.UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), GetEntityID());
+			environment.PrintEnvironment();
 			return 1;
 		}
 	}
