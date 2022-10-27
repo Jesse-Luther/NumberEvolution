@@ -10,16 +10,17 @@
 int main()
 {
 
-   Environment environment(8, 4);
-   environment.InitEnvironment();
-   environment.UpdateEnivronment(0, 0, "F");
-   Entity entity1(0, 0, environment);
+   Environment environment1(5, 5);
+   environment1.InitEnvironment();
+   environment1.UpdateEnvironment(0, 0, "F");
+   Entity entity1(1, 1, environment1, "1");
+
+   
    std::cout << "Entity X pos is: " << entity1.GetEntityXPosition() << std::endl;
    std::cout << "Entity Y pos is: " << entity1.GetEntityYPosition() << std::endl;
-   std::cout << "Grid Width and Height is: " << environment.GetGridDimensions().GRID_WIDTH << ", " << environment.GetGridDimensions().GRID_HEIGHT << std::endl;
-   std::cout << "The value at position 0,0 is " << environment.GetValue(0, 0) << std::endl;
- 
-   
+   std::cout << "Grid Width and Height is: " << environment1.GetGridDimensions().GRID_WIDTH << ", " << environment1.GetGridDimensions().GRID_HEIGHT << std::endl;
+   std::cout << "The value at position 0,0 is " << environment1.GetValue(0, 0) << std::endl;
+
    int a = entity1.EntityRandomMovement();
    std::cout << "Movement was " << a << std::endl;
    int posX1 = entity1.GetEntityXPosition();

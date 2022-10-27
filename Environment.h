@@ -11,8 +11,8 @@
 
 struct GridDimensions {
 	//different grid sizes
-	const int GRID_WIDTH = 10;
-	const int GRID_HEIGHT = 10;
+	 int GRID_WIDTH = 10;
+	 int GRID_HEIGHT = 10;
 };
 
 class Environment {
@@ -21,7 +21,7 @@ public:
 	Environment(const int width, const int height);
 
 	void InitEnvironment(); 
-	void UpdateEnivronment(const int posX, const int posY, const std::string updateValue);
+	void UpdateEnvironment(const int posX, const int posY, const std::string updateValue);
 	void PrintEnvironment();
 	std::string GetValue(int posX, int posY);
 	GridDimensions GetGridDimensions();

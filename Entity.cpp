@@ -33,7 +33,7 @@ Entity::Entity(const int posX, const int posY, Environment &environmentO, const 
 	std::cout << "Entity Created"; \
 	
 	if (spawnErrorCheck == 1) {
-		environmentO.UpdateEnivronment(posX, posY, id);
+		environmentO.UpdateEnvironment(posX, posY, id);
 	}
 
 }
@@ -69,6 +69,10 @@ int Entity::GetEntityYPosition() {
 	return entityPositionY;
 }
 
+std::string Entity::GetEntityID() {
+	return entityID;
+}
+
 /*
 	Sets the entity's position to the specified coordinates. 
 
@@ -84,7 +88,8 @@ void Entity::SetEntityPosition(const int posX, const int posY) {
 
 
 /*
-	Allows the entity to move a single space in a single direction, given the movement is valid
+	Allows the entity to move a single space in a single direction, given the movement is valid,
+	and calls for the grid to be updated if the move was successful.
 	If it successfully moves, it returns 1. Otherwise, if it was unable to move, it returns 0.
 
 	Parameters:
@@ -106,7 +111,9 @@ int Entity::EntityNormalMovement(const char positionChange, const int direction)
 		}
 
 		else {
+			environment.UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), "O");
 			this -> entityPositionX = x;
+			environment.UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), GetEntityID());
 			return 1;
 		}
 	}
@@ -120,6 +127,7 @@ int Entity::EntityNormalMovement(const char positionChange, const int direction)
 
 		else {
 			this -> entityPositionY = y;
+			environment.UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), GetEntityID());
 			return 1;
 		}
 	}

@@ -35,7 +35,7 @@ void Environment::InitEnvironment() {
 	int totalGridSize = this->GetGridDimensions().GRID_WIDTH * this->GetGridDimensions().GRID_HEIGHT;
 
 	for(int i = 0; i < totalGridSize; ++i){
-		environmentGrid.push_back("0");
+		environmentGrid.push_back("O");
 	}
 
 	Environment::PrintEnvironment();
@@ -93,7 +93,7 @@ bool Environment::IsValidPosition(int posX, int posY) {
 		-posY: the index position along the height being accessed (from 0 to (HEIGHT - 1))
 		-updateValue: the value for the specified location to be updated to
 */
-void Environment::UpdateEnivronment(const int posX, const int posY, const std::string updateValue) {
+void Environment::UpdateEnvironment(const int posX, const int posY, const std::string updateValue) {
 	//ensure idex value isn't greater than the length/height of the grid
 	assert(IsValidPosition(posX, posY) == true);
 	
@@ -102,7 +102,7 @@ void Environment::UpdateEnivronment(const int posX, const int posY, const std::s
 	
 	environmentGrid[updateLocation] = updateValue;
 
-	Environment::PrintEnvironment();
+	PrintEnvironment();
 }
 
 GridDimensions Environment::GetGridDimensions() {

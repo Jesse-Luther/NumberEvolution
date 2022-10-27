@@ -5,16 +5,20 @@
 	by controlling the entities, entity movements, and food generation.
 */
 
+//includes
+#include <vector>
+#include <string>
+
 class Simulation {
 
 public:
 
-	//void AddFood
+	
 	//void StartMovements (maybe this shouldnt be here)
 	//void HandleMovements
 	//void UpdatePositionDis()
-	void createEntity();
-
+	//void createEntity();
+	int testNum = 19;
 	std::vector<Entity> entityList;
 
 };

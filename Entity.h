@@ -21,8 +21,10 @@ public:
 	
 	int EntityRandomMovement();
 	int EntityNormalMovement(const char positionChange, const int direction);
+
+	std::string GetEntityID();
 	
-	
+
 	
 
 private:
@@ -30,7 +32,7 @@ private:
 	//{x position, y position}
 	int entityPositionX;
 	int entityPositionY;
-	Environment environment;
+	Environment& environment;
 	std::string entityID = "0";
 	
 

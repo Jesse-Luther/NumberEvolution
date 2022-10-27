@@ -6,3 +6,13 @@
 */
 
 //includes
+
+class Food {
+public:
+	//void AddFood
+	//void RemoveFood
+	
+private:
+
+
+};
