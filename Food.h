@@ -9,10 +9,16 @@
 
 class Food {
 public:
+	Food(Environment &environmentO);
+
 	//void AddFood
-	//void RemoveFood
+	//void RandomFoodSpawn
+	//void spawnFoodLoop    this uses AddFood to spawn food over a period of time
+	//void RemoveFood   to be used in future if food has a time limit 
+	//void setSpawnRate 
 	
 private:
-
+	//food spawn rate
+	Environment &environment;
 
 };

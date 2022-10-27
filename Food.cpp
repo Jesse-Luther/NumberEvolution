@@ -5,3 +5,9 @@
 */
 
 //includes
+#include "Food.h"
+
+Food::Food(Environment& environmentO) : environment{ environmentO } {
+
+}
+
