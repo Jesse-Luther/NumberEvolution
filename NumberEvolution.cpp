@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Environment.cpp"
 #include "Entity.cpp"
+#include "Food.cpp"
 
 
 
@@ -26,6 +27,10 @@ int main()
    int posX1 = entity1.GetEntityXPosition();
    int posY1 = entity1.GetEntityYPosition();
    std::cout << "X pos: " << posX1 << "Y pos: " << posY1;
+
+   Food food(environment1);
+   food.AddFood(4, 4);
+
    
 }
 

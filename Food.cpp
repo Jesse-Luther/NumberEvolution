@@ -11,3 +11,8 @@ Food::Food(Environment& environmentO) : environment{ environmentO } {
 
 }
 
+void Food::AddFood(const int posX, const int posY) {
+	environment.UpdateEnvironment(posX, posY, "F");
+	environment.PrintEnvironment();
+}
+
