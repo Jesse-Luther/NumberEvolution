@@ -20,8 +20,16 @@ Food::Food(Environment& environmentO) : environment{ environmentO } {
 		-posX: X position on the grid environment (in other words, row number)
 		-posY: Y position on the grid environment (in other words, column number)
 */
-void Food::AddFood(const int posX, const int posY) {
+int Food::AddFood(const int posX, const int posY) {
+	if (isdigit(environment.GetValue(posX, posY)[0])) {
+		return 0;
+	}
+
 	environment.UpdateEnvironment(posX, posY, "F");
 	environment.PrintEnvironment();
+	return 1;
 }
 
+//void Food::RandomFoodSpawn() {
+//
+//}
