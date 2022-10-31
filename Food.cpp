@@ -6,6 +6,10 @@
 
 //includes
 #include "Food.h"
+#include <cstdlib>
+#include <time.h>
+#include <math.h>
+#include <random>
 
 Food::Food(Environment& environmentO) : environment{ environmentO } {
 
@@ -30,6 +34,25 @@ int Food::AddFood(const int posX, const int posY) {
 	return 1;
 }
 
-//void Food::RandomFoodSpawn() {
-//
-//}
+int Food::RandomFoodSpawn(std::mt19937& generator) {
+
+	int gridSize = environment.GetGridDimensions().GRID_WIDTH * environment.GetGridDimensions().GRID_WIDTH;
+
+	//set up psuedo-random generator. Use the following at the start of each thread to init with different seed
+	//std::random_device rd; 
+	//std::mt19937 generator(rd());
+	std::uniform_int_distribution<> distribution(0, (gridSize - 1));
+
+
+	int randLocation = distribution(generator);
+	
+	int xDim = randLocation % environment.GetGridDimensions().GRID_WIDTH;
+	int yDim = floor(randLocation / environment.GetGridDimensions().GRID_WIDTH);
+
+
+	int successIndicator = AddFood(xDim, yDim);
+
+	return successIndicator;
+}
+
+

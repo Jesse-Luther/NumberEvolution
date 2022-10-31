@@ -6,13 +6,14 @@
 */
 
 //includes
+#include<random>
 
 class Food {
 public:
 	Food(Environment &environmentO);
 
 	int AddFood(const int posX, const int posY);
-	//int RandomFoodSpawn();
+	int RandomFoodSpawn(std::mt19937 &generator);
 	//void SpawnFoodLoop    this uses AddFood to spawn food over a period of time
 	//void RemoveFood   to be used in future if food has a time limit 
 	//void SetSpawnRate 
