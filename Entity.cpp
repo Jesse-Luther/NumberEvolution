@@ -8,6 +8,7 @@
 #include "Entity.h"
 #include <cstdlib>
 #include<time.h>
+#include<random>
 
 
 //defines
@@ -112,6 +113,7 @@ int Entity::EntityNormalMovement(const char positionChange, const int direction)
 		}
 
 		else {
+			//first set initial position to "O", then set new position to entityID
 			environment.UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), "O");
 			this -> entityPositionX = x;
 			environment.UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), GetEntityID());
@@ -128,6 +130,7 @@ int Entity::EntityNormalMovement(const char positionChange, const int direction)
 		}
 
 		else {
+			//first set initial position to "O", then set new position to entityID
 			environment.UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), "O");
 			this -> entityPositionY = y;
 			environment.UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), GetEntityID());
@@ -142,22 +145,21 @@ int Entity::EntityNormalMovement(const char positionChange, const int direction)
 	for the EntityNormalMovement function, and then calls that function with the randomly 
 	generated values. Returns 0 if the movement failed, and 1 if it succeeded.
 */
-int Entity::EntityRandomMovement() {
-	srand(time(0));
-
+int Entity::EntityRandomMovement(std::mt19937& generator) {
+	//set up the range of value outputs (in this case, it's either 0 or 1)
+	std::uniform_int_distribution<> distribution(0, 1);
+	
 	char positionType;
 
-	int rand1 = rand() % 2;
-	int rand2 = rand() % 2;
+	int rand1 = distribution(generator);
+	int rand2 = distribution(generator);
 	
 	//determine random position type (x or y)
 	if (rand1 == 0) {
 		positionType = 'x';
-		std::cout << "A" << std::endl;
 	}
 	else if (rand1 == 1) {
 		positionType = 'y';
-		std::cout << "B" << std::endl;
 	}
 	else {
 		std::cout << "Error: Failure in function Entity::EntityRandomMovement()" << std::endl;
@@ -166,7 +168,6 @@ int Entity::EntityRandomMovement() {
 
 	//determine direction (1 or -1)
 	if (rand2 == 0) {
-		std::cout << "C" << std::endl;
 		rand2 = -1;
 	}
 

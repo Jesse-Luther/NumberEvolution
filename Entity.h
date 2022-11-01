@@ -19,7 +19,7 @@ public:
 	int GetEntityYPosition();
 	//void SetEntityPosition(const int posX, const int posY); 
 	
-	int EntityRandomMovement();
+	int EntityRandomMovement(std::mt19937& generator);
 	int EntityNormalMovement(const char positionChange, const int direction);
 
 	std::string GetEntityID();
@@ -32,8 +32,10 @@ private:
 	//{x position, y position}
 	int entityPositionX;
 	int entityPositionY;
-	Environment& environment;
+	Environment &environment;
 	std::string entityID = "0";
+	//int foodConsumed = 0;
+	//int movementSpeed = 0;
 	
 
 };
