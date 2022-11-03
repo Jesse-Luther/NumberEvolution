@@ -10,10 +10,17 @@
 #include <time.h>
 #include <math.h>
 #include <random>
+#include <chrono>
+#include <thread>
 
 Food::Food(Environment& environmentO) : environment{ environmentO } {
 
 }
+
+Food::Food(Environment& environmentO, const int spawnRate) : environment{ environmentO }, foodSpawnRate{ spawnRate } {
+
+}
+
 
 /*
 	Calls upon the Environment::UpdateEnvironment function to change
@@ -26,6 +33,7 @@ Food::Food(Environment& environmentO) : environment{ environmentO } {
 */
 int Food::AddFood(const int posX, const int posY) {
 	if (isdigit(environment.GetValue(posX, posY)[0])) {
+		std::cout << "There is an entity here" << std::endl;
 		return 0;
 	}
 
@@ -34,7 +42,7 @@ int Food::AddFood(const int posX, const int posY) {
 	return 1;
 }
 
-int Food::RandomFoodSpawn(std::mt19937& generator) {
+int Food::RandomFoodSpawn(std::mt19937 &generator) {
 
 	int gridSize = environment.GetGridDimensions().GRID_WIDTH * environment.GetGridDimensions().GRID_WIDTH;
 
@@ -55,4 +63,7 @@ int Food::RandomFoodSpawn(std::mt19937& generator) {
 	return successIndicator;
 }
 
+//void Food::SpawnFoodLoop(int duration, int a) {
+//
+//}
 
