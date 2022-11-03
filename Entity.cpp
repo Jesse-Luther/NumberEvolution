@@ -75,6 +75,10 @@ std::string Entity::GetEntityID() {
 	return entityID;
 }
 
+MovementSpeed Entity::GetEntityMovementSpeed() {
+	return movementSpeed;
+}
+
 /*
 	Sets the entity's position to the specified coordinates. 
 

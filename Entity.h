@@ -22,6 +22,7 @@ public:
 	bool IsValidPosition(int posX, int posY);
 	int GetEntityXPosition();
 	int GetEntityYPosition();
+	MovementSpeed GetEntityMovementSpeed();
 	//void SetEntityPosition(const int posX, const int posY); 
 	
 	int EntityRandomMovement(std::mt19937& generator);
@@ -39,7 +40,6 @@ private:
 	Environment& environment;
 	std::string entityID = "0";
 	//int foodConsumed = 0;
-	//int movementSpeed = 0;
 	MovementSpeed movementSpeed;
 	
 
