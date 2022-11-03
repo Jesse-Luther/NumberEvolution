@@ -67,3 +67,6 @@ int Food::RandomFoodSpawn(std::mt19937 &generator) {
 //
 //}
 
+void Food::SetSpawnRate(int spawnRate) {
+	foodSpawnRate = spawnRate;
+}

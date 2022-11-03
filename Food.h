@@ -15,9 +15,9 @@ public:
 
 	int AddFood(const int posX, const int posY);
 	int RandomFoodSpawn(std::mt19937 &generator);
-	void SpawnFoodLoop(int duration, int a);
+	//void SpawnFoodLoop(int duration, int a);
 	//void RemoveFood   to be used in future if food has a time limit 
-	//void SetSpawnRate 
+	void SetSpawnRate(int spawnRate);
 	//void EatFood???
 	
 private:
