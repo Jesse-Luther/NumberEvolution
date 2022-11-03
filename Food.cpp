@@ -67,6 +67,21 @@ int Food::RandomFoodSpawn(std::mt19937 &generator) {
 //
 //}
 
+/*
+	Sets the foodSpawnRate for the food class object.
+
+	Parameters:
+		-spawnRate: the rate at which food will spawn into the grid environment
+
+	
+*/
 void Food::SetSpawnRate(int spawnRate) {
 	foodSpawnRate = spawnRate;
+}
+
+/*
+	Get the spawn rate of a Food object.
+*/
+int Food::GetSpawnRate() {
+	return foodSpawnRate;
 }

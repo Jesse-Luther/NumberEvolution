@@ -18,6 +18,7 @@ public:
 	//void SpawnFoodLoop(int duration, int a);
 	//void RemoveFood   to be used in future if food has a time limit 
 	void SetSpawnRate(int spawnRate);
+	int GetSpawnRate();
 	//void EatFood???
 	
 private:
