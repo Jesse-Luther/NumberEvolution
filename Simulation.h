@@ -2,7 +2,8 @@
 /*
 	Filename: Simulation.h
 	Description: Handles processes that are involved in running the simulation
-	by controlling the entities, entity movements, and food generation.
+	by controlling the entities, entity movements, and food generation. In other 
+	words, a sort of event handler. Core of sim event handler uses Priority Queue.
 */
 
 //includes
@@ -13,12 +14,17 @@ class Simulation {
 
 public:
 
+	Simulation(Environment environmentO);
 	
-	//void StartMovements (maybe this shouldnt be here)
+	//void InitializePriorityQueue(int size)
+	//void StartSimulation
 	//void HandleMovements
 	//void UpdatePositionDis()
 	//void createEntity();
-	int testNum = 19;
+	
+private:
+	Environment& environment;
+	Food foodCreator(environment, 5);
 	std::vector<Entity> entityList;
 
 };
