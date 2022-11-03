@@ -7,13 +7,13 @@
 //includes
 #include "Entity.h"
 #include <cstdlib>
-#include<time.h>
-#include<random>
+#include <time.h>
+#include <random>
 
 
 //defines
 
-Entity::Entity(const int posX, const int posY, Environment &environmentO, const std::string id) : entityPositionX{ posX }, entityPositionY{ posY }, environment{ environmentO }, entityID{ id } {
+Entity::Entity(const int posX, const int posY, Environment& environmentO, const std::string id, const int speedBase) : entityPositionX{ posX }, entityPositionY{ posY }, environment{ environmentO }, entityID{ id }, movementSpeed{speedBase, speedBase} {
 	
 	//set to false if an erreneous spawn occurs, to prevent the print attempt later on
 	bool spawnErrorCheck = 1;
@@ -138,6 +138,7 @@ int Entity::EntityNormalMovement(const char positionChange, const int direction)
 			return 1;
 		}
 	}
+	return 0;
 }
 
 /*

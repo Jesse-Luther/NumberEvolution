@@ -9,14 +9,14 @@
 #include <string>
 struct MovementSpeed {
 	int baseMovementSpeed = 1;
-	int currentMovementSpeedTick =1;
+	int currentMovementSpeedTick = 1;
 };
 
 class Entity {
 
 public:
 
-	Entity(int posX, int posY, Environment& environmentO, const std::string id);
+	Entity(int posX, int posY, Environment& environmentO, const std::string id, const int speedBase);
 
 
 	bool IsValidPosition(int posX, int posY);
@@ -34,7 +34,6 @@ public:
 
 private:
 
-	//{x position, y position}
 	int entityPositionX;
 	int entityPositionY;
 	Environment& environment;
