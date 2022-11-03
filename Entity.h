@@ -6,13 +6,18 @@
 */
 
 //includes
-#include<string>
+#include <string>
+struct MovementSpeed {
+	int baseMovementSpeed = 1;
+	int currentMovementSpeedTick =1;
+};
 
 class Entity {
 
 public:
 
-	Entity(int posX, int posY, Environment &environmentO, const std::string id);
+	Entity(int posX, int posY, Environment& environmentO, const std::string id);
+
 
 	bool IsValidPosition(int posX, int posY);
 	int GetEntityXPosition();
@@ -32,10 +37,11 @@ private:
 	//{x position, y position}
 	int entityPositionX;
 	int entityPositionY;
-	Environment &environment;
+	Environment& environment;
 	std::string entityID = "0";
 	//int foodConsumed = 0;
 	//int movementSpeed = 0;
+	MovementSpeed movementSpeed;
 	
 
 };
