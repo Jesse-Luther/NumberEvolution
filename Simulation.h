@@ -9,22 +9,26 @@
 //includes
 #include <vector>
 #include <string>
+#include <queue>
 
 class Simulation {
 
 public:
 
-	Simulation(Environment environmentO);
-	
-	//void InitializePriorityQueue(int size)
+	Simulation(Environment& environmentO, const int numberOfEntities);
+	//std::vector<Entity> reserveSpace()
+	//void InitializePriorityQueue(const int size);
 	//void StartSimulation
 	//void HandleMovements
 	//void UpdatePositionDis()
 	//void createEntity();
-	
+
 private:
+	int numEntities;
 	Environment& environment;
-	Food foodCreator(environment, 5);
+	Food foodCreator{ environment, 5 }; 
 	std::vector<Entity> entityList;
+	//std::priority_queue<int, std::vector<int>, std::greater<int> > my_min_heap;
+	//std::priority_queue<Entity, std::vector<Entity>> EventHandlerQueue(std::greater<Entity>(), std::move(entityList));
 
 };

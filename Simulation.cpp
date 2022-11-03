@@ -6,8 +6,24 @@
 */
 
 //includes
+#include <queue>
+
 #include "Simulation.h"
 
-Simulation::Simulation(Environment& environmentO) : environment{ environmentO } {
+Simulation::Simulation(Environment& environmentO, const int numberOfEntities) : environment{ environmentO }, numEntities{ numberOfEntities } {
+	try {
+		if (numberOfEntities >= 1000) {
+			throw numberOfEntities;
+		}
+
+	}
+
+
+	catch (const int numberOfEntities) {
+		std::cout << "Error: Too many entities have been added to the queue" << std::endl;
+	}
+}
+
+void Simulation::InitializePriorityQueue(const int size) {
 
 }
