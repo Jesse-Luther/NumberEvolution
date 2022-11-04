@@ -11,7 +11,13 @@
 #include <random>
 
 
-//defines
+/*
+	Basic level constructor to create a dummy Entity that doesn't actually get spawned
+	onto the grid environment. Used for the EventObject.h class.
+*/
+Entity::Entity(Environment& environmentO) : environment{ environmentO } {
+
+}
 
 Entity::Entity(const int posX, const int posY, Environment& environmentO, const std::string id, const int speedBase) : entityPositionX{ posX }, entityPositionY{ posY }, environment{ environmentO }, entityID{ id }, movementSpeed{speedBase, speedBase} {
 	

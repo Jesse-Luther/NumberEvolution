@@ -16,6 +16,7 @@ class Entity {
 
 public:
 
+	Entity(Environment& environment0);
 	Entity(int posX, int posY, Environment& environmentO, const std::string id, const int speedBase);
 
 
