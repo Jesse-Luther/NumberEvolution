@@ -1,7 +1,8 @@
 /*
 	Filename: Entity.cpp
 	Description: Contains functions to track information about entities
-	that will populate the grid environment.
+	that will populate the grid environment. Entity names MUST be integer
+	values.
 */
 
 //includes
@@ -15,11 +16,11 @@
 	Basic level constructor to create a dummy Entity that doesn't actually get spawned
 	onto the grid environment. Used for the EventObject.h class.
 */
-Entity::Entity(Environment& environmentO) : environment{ environmentO } {
+Entity::Entity(Environment* environmentO) : environment{ environmentO } {
 
 }
 
-Entity::Entity(const int posX, const int posY, Environment& environmentO, const std::string id, const int speedBase) : entityPositionX{ posX }, entityPositionY{ posY }, environment{ environmentO }, entityID{ id }, movementSpeed{speedBase, speedBase} {
+Entity::Entity(const int posX, const int posY, Environment* environmentO, const std::string id, const int speedBase) : entityPositionX{ posX }, entityPositionY{ posY }, environment{ environmentO }, entityID{ id }, movementSpeed{speedBase, speedBase} {
 	
 	//set to false if an erreneous spawn occurs, to prevent the print attempt later on
 	bool spawnErrorCheck = 1;
@@ -40,8 +41,8 @@ Entity::Entity(const int posX, const int posY, Environment& environmentO, const 
 	std::cout << "Entity Created"; \
 	
 	if (spawnErrorCheck == 1) {
-		environmentO.UpdateEnvironment(posX, posY, id);
-		environmentO.PrintEnvironment();
+		environmentO->UpdateEnvironment(posX, posY, id);
+		environmentO->PrintEnvironment();
 	}
 
 }
@@ -51,17 +52,17 @@ Entity::Entity(const int posX, const int posY, Environment& environmentO, const 
 	it is within the confines of the current grid, and is not already occupied by another entity. 
 */
 bool Entity::IsValidPosition(int posX, int posY) {
-	if (posX < 0 || posX >= this->environment.GetGridDimensions().GRID_WIDTH) {
+	if (posX < 0 || posX >= this->environment->GetGridDimensions().GRID_WIDTH) {
 		std::cout << "X position error" << std::endl;
 		return false;
 	}
-	if (posY < 0 || posY >= this->environment.GetGridDimensions().GRID_HEIGHT) {
+	if (posY < 0 || posY >= this->environment->GetGridDimensions().GRID_HEIGHT) {
 		std::cout << "Y position error" << std::endl;
 		return false;
 	}
 	//get the current grid value at the location. If it contains a digit, it is an entity, 
 	//and therefore, the position is occupied and not a valid place to go
-	if (isdigit(environment.GetValue(posX, posY)[0])) {
+	if (isdigit(environment->GetValue(posX, posY)[0])) {
 		std::cout << "Location Occupied error" << std::endl;
 		return false;
 	}
@@ -124,10 +125,10 @@ int Entity::EntityNormalMovement(const char positionChange, const int direction)
 
 		else {
 			//first set initial position to "O", then set new position to entityID
-			environment.UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), "O");
+			environment->UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), "O");
 			this -> entityPositionX = x;
-			environment.UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), GetEntityID());
-			environment.PrintEnvironment();
+			environment->UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), GetEntityID());
+			environment->PrintEnvironment();
 			return 1;
 		}
 	}
@@ -141,10 +142,10 @@ int Entity::EntityNormalMovement(const char positionChange, const int direction)
 
 		else {
 			//first set initial position to "O", then set new position to entityID
-			environment.UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), "O");
+			environment->UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), "O");
 			this -> entityPositionY = y;
-			environment.UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), GetEntityID());
-			environment.PrintEnvironment();
+			environment->UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), GetEntityID());
+			environment->PrintEnvironment();
 			return 1;
 		}
 	}

@@ -11,7 +11,7 @@
 #include "Food.h"
 #include "EventObject.h"
 
-EventObject::EventObject(char oType, Entity& eRef, Food& fRef) : type{ oType }, entityProxy{ eRef }, foodProxy{ fRef } {
+EventObject::EventObject(char oType, Entity eRef, Food fRef) : type{ oType }, entityProxy{ eRef }, foodProxy{ fRef } {
 	if (oType == 'e') {
 		currentSpeedTick = entityProxy.GetEntityMovementSpeed().baseMovementSpeed;
 	}
@@ -23,6 +23,6 @@ EventObject::EventObject(char oType, Entity& eRef, Food& fRef) : type{ oType }, 
 	}
 }
 
-int EventObject::getCurrentSpeedTick() {
+int EventObject::getCurrentSpeedTick() const{
 	return currentSpeedTick;
 }

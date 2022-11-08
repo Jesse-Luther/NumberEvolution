@@ -13,11 +13,11 @@
 #include <chrono>
 #include <thread>
 
-Food::Food(Environment& environmentO) : environment{ environmentO } {
+Food::Food(Environment* environmentO) : environment{ environmentO } {
 
 }
 
-Food::Food(Environment& environmentO, const int spawnRate) : environment{ environmentO }, foodSpawnRate{ spawnRate } {
+Food::Food(Environment* environmentO, const int spawnRate) : environment{ environmentO }, foodSpawnRate{ spawnRate } {
 
 }
 
@@ -32,19 +32,19 @@ Food::Food(Environment& environmentO, const int spawnRate) : environment{ enviro
 		-posY: Y position on the grid environment (in other words, column number)
 */
 int Food::AddFood(const int posX, const int posY) {
-	if (isdigit(environment.GetValue(posX, posY)[0])) {
+	if (isdigit(environment->GetValue(posX, posY)[0])) {
 		std::cout << "There is an entity here" << std::endl;
 		return 0;
 	}
 
-	environment.UpdateEnvironment(posX, posY, "F");
-	environment.PrintEnvironment();
+	environment->UpdateEnvironment(posX, posY, "F");
+	environment->PrintEnvironment();
 	return 1;
 }
 
 int Food::RandomFoodSpawn(std::mt19937 &generator) {
 
-	int gridSize = environment.GetGridDimensions().GRID_WIDTH * environment.GetGridDimensions().GRID_WIDTH;
+	int gridSize = environment->GetGridDimensions().GRID_WIDTH * environment->GetGridDimensions().GRID_WIDTH;
 
 	//set up psuedo-random generator. Use the following at the start of each thread to init with different seed
 	//std::random_device rd; 
@@ -54,18 +54,14 @@ int Food::RandomFoodSpawn(std::mt19937 &generator) {
 
 	int randLocation = distribution(generator);
 	
-	int xDim = randLocation % environment.GetGridDimensions().GRID_WIDTH;
-	int yDim = floor(randLocation / environment.GetGridDimensions().GRID_WIDTH);
+	int xDim = randLocation % environment->GetGridDimensions().GRID_WIDTH;
+	int yDim = floor(randLocation / environment->GetGridDimensions().GRID_WIDTH);
 
 
 	int successIndicator = AddFood(xDim, yDim);
 
 	return successIndicator;
 }
-
-//void Food::SpawnFoodLoop(int duration, int a) {
-//
-//}
 
 /*
 	Sets the foodSpawnRate for the food class object.

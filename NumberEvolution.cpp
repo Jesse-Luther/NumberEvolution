@@ -2,19 +2,46 @@
 //
 
 #include <iostream>
+#include <cstdlib>
+#include <time.h>
+#include <random>
+
 #include "Environment.cpp"
 #include "Entity.cpp"
 #include "Food.cpp"
+#include "Simulation.cpp"
+#include "EventObject.cpp"
 
 
 
 int main()
 {
+	std::random_device rd1;
+	std::mt19937 generator1(rd1());
 
-   Environment environment1(5, 5);
+	Environment environment1(5, 5);
+	environment1.InitEnvironment();
+	Environment* ePointer = &environment1;
+	Simulation sim(ePointer, 4);
+	//sim.InitializeEntityListBasic();
+	Entity entity1(0, 0, ePointer, "1", 8);
+	Food foodOb(ePointer, 5);
+	sim.InitializeEntityListBasic();
+	EventObject ob('f', entity1, foodOb);
+	sim.InitializePriorityQueue(1);
+	//std::cout << ob.getCurrentSpeedTick();
+
+	//EventObject ob('e', sim.entityList[0], foodOb);
+	//std::cout << ob.getCurrentSpeedTick();
+	
+	/*
+	std::random_device rd2;
+	std::mt19937 generator2(rd2());
+
+   Environment environment1(3, 3);
    environment1.InitEnvironment();
-   environment1.UpdateEnvironment(0, 0, "F");
    Entity entity1(1, 1, environment1, "1");
+   Entity entity2(2, 2, environment1, "2");
 
    
    std::cout << "Entity X pos is: " << entity1.GetEntityXPosition() << std::endl;
@@ -22,16 +49,43 @@ int main()
    std::cout << "Grid Width and Height is: " << environment1.GetGridDimensions().GRID_WIDTH << ", " << environment1.GetGridDimensions().GRID_HEIGHT << std::endl;
    std::cout << "The value at position 0,0 is " << environment1.GetValue(0, 0) << std::endl;
 
-   int a = entity1.EntityRandomMovement();
-   std::cout << "Movement was " << a << std::endl;
+   
+   for (int i = 0; i < 3; ++i) {
+	   std::cout << "1 moving" << std::endl;
+	   int a = entity1.EntityRandomMovement(generator1);
+	   std::cout << "2 moving" << std::endl;
+	   entity2.EntityRandomMovement(generator1);
+   }
+   
+
+
+   //std::cout << "Movement was " << a << std::endl;
    int posX1 = entity1.GetEntityXPosition();
    int posY1 = entity1.GetEntityYPosition();
-   std::cout << "X pos: " << posX1 << "Y pos: " << posY1;
+   //std::cout << "X pos: " << posX1 << "Y pos: " << posY1;
 
-   Food food(environment1);
-   food.AddFood(4, 4);
+   Food food1(environment1, 4);
+   Food food2(environment1);
+   std::cout << "Food Spawn Rate is: " << food1.GetSpawnRate() << " and " << food2.GetSpawnRate() << std::endl;
+
+   Simulation simulation1(environment1, 4);
+   simulation1.InitializeEntityListBasic();
+
 
    
+
+   //generate food with two supposedly different seeds, and ensure the seeds are different by noting whether they give different values. Also tests food spawn distribution.
+   /*
+   Food food(environment1);
+   for (int i = 0; i < 3; ++i) {
+	   food.RandomFoodSpawn(generator1);
+   }
+   std::cout << "==========================================================================" << std::endl;
+   for (int i = 0; i < 3; ++i) {
+	   food.RandomFoodSpawn(generator2);
+   }
+  */
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

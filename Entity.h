@@ -2,11 +2,13 @@
 /*
 	Filename: Entity.h
 	Description: Contains functions to track information about entities
-	that will populate the grid environment.
+	that will populate the grid environment. Entity names MUST be integer 
+	values. 
 */
 
 //includes
 #include <string>
+
 struct MovementSpeed {
 	int baseMovementSpeed = 1;
 	int currentMovementSpeedTick = 1;
@@ -16,8 +18,8 @@ class Entity {
 
 public:
 
-	Entity(Environment& environment0);
-	Entity(int posX, int posY, Environment& environmentO, const std::string id, const int speedBase);
+	Entity(Environment* environment0);
+	Entity(int posX, int posY, Environment* environmentO, const std::string id, const int speedBase);
 
 
 	bool IsValidPosition(int posX, int posY);
@@ -32,13 +34,11 @@ public:
 	std::string GetEntityID();
 	
 
-	
-
 private:
 
-	int entityPositionX;
-	int entityPositionY;
-	Environment& environment;
+	int entityPositionX = 0;
+	int entityPositionY = 0;
+	Environment* environment;
 	std::string entityID = "0";
 	//int foodConsumed = 0;
 	MovementSpeed movementSpeed;

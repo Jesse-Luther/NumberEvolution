@@ -11,11 +11,12 @@
 #include <string>
 #include <queue>
 
+#include "EventObject.h"
 class Simulation {
 
 public:
 
-	Simulation(Environment& environmentO, const int numberOfEntities);
+	Simulation(Environment* environmentO, const int numberOfEntities);
 	void InitializeEntityListBasic();
 	void InitializePriorityQueue(const int size);
 	//void StartSimulation
@@ -23,12 +24,15 @@ public:
 	//void UpdatePositionDis()
 	//void createEntity();
 
-private:
-	int numEntities;
-	Environment& environment;
-	Food foodCreator{ environment, 5 }; 
 
-    std::vector<Entity> entityList;
-	std::priority_queue<int, std::vector<int>, std::greater<int> > simEventHandler;
+//private:
+	int numEntities;
+	Environment* environment;
+	Food foodCreator{ environment, 5 }; 
+	Entity basicEntity{ environment };
+
+	std::vector<Entity> entityList;
+	std::priority_queue<EventObject, std::vector<EventObject>, std::greater<EventObject> > simEventHandler;
+
 
 };

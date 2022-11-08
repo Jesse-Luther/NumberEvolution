@@ -13,14 +13,18 @@
 class EventObject {
 public:
 
-	EventObject(char oType, Entity& eRef, Food& fRef);
+	EventObject(char oType, Entity eRef, Food fRef);
 
-	int getCurrentSpeedTick();
+	//EventObject(const EventObject&) = default;
+
+	int getCurrentSpeedTick() const;
 
 	//e = entity, f = food.
 	char type;
 	
-	Entity& entityProxy;
-	Food& foodProxy;
+	Entity entityProxy;
+	Food foodProxy;
 	int currentSpeedTick = -1;
+
+
 };

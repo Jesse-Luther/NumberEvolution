@@ -6,8 +6,8 @@
 */
 
 //includes
-#include<string>
-#include<vector>
+#include <string>
+#include <vector>
 
 struct GridDimensions {
 	//different grid sizes
