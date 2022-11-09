@@ -17,7 +17,8 @@ class Simulation {
 public:
 
 	Simulation(Environment* environmentO, const int numberOfEntities);
-	void InitializeEntityListBasic();
+	void InitializeEntityListBasic(int numEntities);
+	void InitializeEntityPointerList();
 	void InitializePriorityQueue(const int size);
 	//void StartSimulation
 	//void HandleMovements
@@ -30,8 +31,11 @@ public:
 	Environment* environment;
 	Food foodCreator{ environment, 5 }; 
 	Entity basicEntity{ environment };
+	Food* foodCreatorP = &foodCreator;
+	Entity* basicEntityP = &basicEntity;
 
 	std::vector<Entity> entityList;
+	std::vector<Entity*> entityPointerList;
 	std::priority_queue<EventObject, std::vector<EventObject>, std::greater<EventObject> > simEventHandler;
 
 
