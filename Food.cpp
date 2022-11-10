@@ -44,7 +44,7 @@ int Food::AddFood(const int posX, const int posY) {
 
 int Food::RandomFoodSpawn(std::mt19937 &generator) {
 
-	int gridSize = environment->GetGridDimensions().GRID_WIDTH * environment->GetGridDimensions().GRID_WIDTH;
+	int gridSize = environment->GetGridDimensions().GRID_WIDTH * environment->GetGridDimensions().GRID_HEIGHT;
 
 	//set up psuedo-random generator. Use the following at the start of each thread to init with different seed
 	//std::random_device rd; 
@@ -53,11 +53,13 @@ int Food::RandomFoodSpawn(std::mt19937 &generator) {
 
 
 	int randLocation = distribution(generator);
-	
+
 	int xDim = randLocation % environment->GetGridDimensions().GRID_WIDTH;
 	int yDim = floor(randLocation / environment->GetGridDimensions().GRID_WIDTH);
 
-
+	std::cout << "Grid size is: " << gridSize << std::endl;
+	std::cout << "RandLocation is: " << randLocation << std::endl;
+	std::cout << "Food was added at X: " << xDim << " and Y: " << yDim << std::endl;
 	int successIndicator = AddFood(xDim, yDim);
 
 	return successIndicator;
