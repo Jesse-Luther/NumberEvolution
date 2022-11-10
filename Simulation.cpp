@@ -14,7 +14,7 @@
 #include "Simulation.h"
 #include "EventObject.h"
 
-Simulation::Simulation(Environment* environmentO, const int numberOfEntities) : environment{ environmentO }, numEntities{ numberOfEntities } {
+Simulation::Simulation(Environment* environmentO, const int numberOfEntities, std::mt19937 generator) : environment{ environmentO }, numEntities{ numberOfEntities }, randomGenerator{ generator } {
 
 }
 
@@ -66,3 +66,14 @@ void Simulation::InitializePriorityQueue(const int size) {
 
 }
 
+/*
+		Resolve the action of an EventObject who's currentSpeedTick is 0 or less, and then reinsert the EO into the PQ.
+		Type of action taken is determined by the type of the Event Object.
+
+void Simulation::ResolveAction() {
+	if (simEventHandler.top().type == 'f') {
+		simEventHandler.top().foodProxy->RandomFoodSpawn(generator1)
+	}
+}
+
+*/
