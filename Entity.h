@@ -40,7 +40,6 @@ private:
 	int entityPositionY = 0;
 	Environment* environment;
 	std::string entityID = "0";
-	//int foodConsumed = 0;
 	MovementSpeed movementSpeed;
 	
 

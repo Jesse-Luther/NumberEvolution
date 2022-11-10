@@ -24,12 +24,17 @@ int main()
 	Environment* ePointer = &environment1;
 	Simulation sim(ePointer, 4);
 	//sim.InitializeEntityListBasic();
-	Entity entity1(0, 0, ePointer, "1", 8);
+	//Entity entity1(0, 0, ePointer, "1", 8);
 	Food foodOb(ePointer, 5);
-	sim.InitializeEntityListBasic();
-	EventObject ob('f', entity1, foodOb);
-	sim.InitializePriorityQueue(1);
-	//std::cout << ob.getCurrentSpeedTick();
+	sim.InitializeEntityListBasic(4);
+	sim.InitializeEntityPointerList();
+	//EventObject ob('f', entity1, foodOb);
+	sim.InitializePriorityQueue(5);
+	
+	//EventObject test = sim.simEventHandler.top();
+	//std::cout << test.getCurrentSpeedTick() << std::endl;
+
+	sim.InitializeEntityPointerList();
 
 	//EventObject ob('e', sim.entityList[0], foodOb);
 	//std::cout << ob.getCurrentSpeedTick();
