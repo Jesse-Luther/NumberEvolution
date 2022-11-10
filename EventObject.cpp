@@ -6,17 +6,18 @@
 */
 
 //includes
-
+#include <string>
 #include "Entity.h"
 #include "Food.h"
 #include "EventObject.h"
 
-EventObject::EventObject(char oType, Entity eRef, Food fRef) : type{ oType }, entityProxy{ eRef }, foodProxy{ fRef } {
+EventObject::EventObject(char oType, Entity* eRef, Food* fRef) : type{ oType }, entityProxy{ eRef }, foodProxy{ fRef } {
 	if (oType == 'e') {
-		currentSpeedTick = entityProxy.GetEntityMovementSpeed().baseMovementSpeed;
+		currentSpeedTick = entityProxy->GetEntityMovementSpeed().baseMovementSpeed;
 	}
 	else if (oType == 'f') {
-		currentSpeedTick = foodProxy.GetSpawnRate();
+		currentSpeedTick = foodProxy->GetSpawnRate();
+
 	}
 	else {
 		std::cout << "AN ERROR HAS OCCURRED" << std::endl;
