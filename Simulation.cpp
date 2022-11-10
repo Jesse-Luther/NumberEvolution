@@ -19,13 +19,13 @@ Simulation::Simulation(Environment* environmentO, const int numberOfEntities, st
 }
 
 /*
-	Initialize the EntityList with 4 entities, one in each corner of the grid.
+	Initialize the EntityList with a number of entities equal to eCount
 */
 void Simulation::InitializeEntityListBasic(int eCount) {
 	for (int i = 0, j = 0; i < eCount; ++i) {
 		entityList.push_back(Entity(i % environment->GetGridDimensions().GRID_WIDTH, j, environment, std::to_string(i + 1), i + 1));
 
-		if ((i % environment->GetGridDimensions().GRID_WIDTH) == 4) {
+		if ((i % environment->GetGridDimensions().GRID_WIDTH) == (environment->GetGridDimensions().GRID_WIDTH - 1)) {
 			++j;
 		}
 	}
@@ -68,12 +68,12 @@ void Simulation::InitializePriorityQueue(const int size) {
 
 /*
 		Resolve the action of an EventObject who's currentSpeedTick is 0 or less, and then reinsert the EO into the PQ.
-		Type of action taken is determined by the type of the Event Object.
+		Type of action taken is determined by the type of the Event Object. This only gets called from RunSimulation
+		if the CurrentTickSpeed of the top EventObject in the PQ is 0 or less. 
 
 void Simulation::ResolveAction() {
 	if (simEventHandler.top().type == 'f') {
-		simEventHandler.top().foodProxy->RandomFoodSpawn(generator1)
+		simEventHandler.top().foodProxy->RandomFoodSpawn(randomGenerator);
 	}
 }
-
 */
