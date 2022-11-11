@@ -24,6 +24,11 @@ EventObject::EventObject(char oType, Entity* eRef, Food* fRef) : type{ oType }, 
 	}
 }
 
-int EventObject::getCurrentSpeedTick() const{
+int EventObject::GetCurrentSpeedTick() const{
 	return currentSpeedTick;
 }
+
+char EventObject::GetType() {
+	return type;
+}
+
