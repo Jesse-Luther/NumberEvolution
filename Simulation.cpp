@@ -42,7 +42,7 @@ void Simulation::InitializeEntityPointerList() {
 /*
 	Overload the greater than operator, so that it can be used to compare two EventObjects
 */
-bool operator > (EventObject const& a, EventObject const& b) { return a.currentSpeedTick > b.currentSpeedTick; }
+bool operator > (EventObject const& a, EventObject const& b) { return a.GetCurrentSpeedTick() > b.GetCurrentSpeedTick(); }
 
 
 
@@ -58,7 +58,6 @@ void Simulation::InitializePriorityQueue(const int size) {
 	for (int i = 0; i < size - 1; ++i) {
 	
 		simEventHandler.push(EventObject('e', entityPointerList[i], foodCreatorP));
-	
 	}
 
 	std::cout << "Size of PQ is: " << simEventHandler.size() << std::endl;
@@ -70,10 +69,19 @@ void Simulation::InitializePriorityQueue(const int size) {
 		Resolve the action of an EventObject who's currentSpeedTick is 0 or less, and then reinsert the EO into the PQ.
 		Type of action taken is determined by the type of the Event Object. This only gets called from RunSimulation
 		if the CurrentTickSpeed of the top EventObject in the PQ is 0 or less. 
-
-void Simulation::ResolveAction() {
+*/
+void Simulation::ResolveTopAction() {
 	if (simEventHandler.top().type == 'f') {
+		//resolve the food object's action, which in this case is spawning food in a random location
 		simEventHandler.top().foodProxy->RandomFoodSpawn(randomGenerator);
+
+		//create a copy of the top element of the simEventHandler PQ, so that it can be safely reinserted
+		EventObject tempEO = simEventHandler.top();
+
+		//reinsert an EventObject into the queue with the same data as it originally had. Note: 
+
+
+
 	}
 }
-*/
+

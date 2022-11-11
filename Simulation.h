@@ -22,17 +22,17 @@ public:
 	void InitializePriorityQueue(const int size);
 	//void RunSimulation();
 	//resolve the action of an EventObject who's currentSpeedTick is 0 or less, and then reinsert the EO into the PQ
-	void ResolveAction();
+	void ResolveTopAction();
 
 	//void HandleMovements
 	//void UpdatePositionDis()
 	//void createEntity();
 	std::mt19937 randomGenerator;
 
-//private:
+private:
 	int numEntities;
 	Environment* environment;
-	Food foodCreator{ environment, 5 }; 
+	Food foodCreator{ environment, 1 }; 
 	Entity basicEntity{ environment };
 	//pointers for the Food and Basic entity, to be used in making an EventObject object
 	Food* foodCreatorP = &foodCreator;
