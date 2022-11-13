@@ -28,7 +28,41 @@ int EventObject::GetCurrentSpeedTick() const{
 	return currentSpeedTick;
 }
 
-char EventObject::GetType() {
+char EventObject::GetType() const{
 	return type;
+}
+
+/*
+	Performs the action corrosponding to the type of object that the EventObject is representing.
+	If it is a Food object, it spawns a random food, and if it an entity, it makes a random 
+	movement. Will return 0 if it failed to take its action (entity tried to move to an invalid
+	location or food tried to spawn in invalid location), and 1 if it succeeded. More action types 
+	or EventObject types may be added in the future. 
+
+	Parameters:
+		-generator: a generator created using a random device in main. Note: this functionality has 
+		only been tested in visual studio, and may not work using compilers from other environments.
+		A possible failure state would be lack of proper randomization. 
+*/
+int EventObject::PerformTypeAction(std::mt19937& generator) {
+	if (type == 'f') {
+		if (foodProxy->RandomFoodSpawn(generator) == 0) {
+			return 0;
+		}
+		else {
+			return 1;
+		}
+	}
+	else if (type = 'e') {
+		if (entityProxy->EntityRandomMovement(generator) == 0) {
+			return 0;
+		}
+		else {
+			return 1;
+		}
+	}
+	else {
+		assert(type == 'f' || type == 'e');
+	}
 }
 
