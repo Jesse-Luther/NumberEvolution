@@ -66,3 +66,18 @@ int EventObject::PerformTypeAction(std::mt19937& generator) {
 	}
 }
 
+/*
+	reset the currentSpeedTick value to the proxy object type's base value
+*/
+void EventObject::ResetCurrentSpeedTick() {
+	if (type == 'f') {
+		currentSpeedTick = foodProxy->GetSpawnRate();
+	}
+	else if (type == 'e') {
+		currentSpeedTick = entityProxy->GetEntityMovementSpeed().baseMovementSpeed;
+	}
+	else {
+		assert(type == 'f' || type == 'e');
+	}
+}
+

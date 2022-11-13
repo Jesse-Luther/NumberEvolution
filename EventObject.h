@@ -14,13 +14,14 @@ public:
 
 	EventObject(char oType, Entity* eRef, Food* fRef);
 	int GetCurrentSpeedTick() const;
+	void ResetCurrentSpeedTick();
 	char GetType() const;
 
 	int PerformTypeAction(std::mt19937& generator);
 
 
 
-//private:
+private:
 
 	//e = entity, f = food.
 	char type;
