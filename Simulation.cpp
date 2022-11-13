@@ -61,27 +61,57 @@ void Simulation::InitializePriorityQueue(const int size) {
 	}
 
 	std::cout << "Size of PQ is: " << simEventHandler.size() << std::endl;
-	std::cout << "Current Tick of top Event Object is " << simEventHandler.top().getCurrentSpeedTick() << std::endl;
+	std::cout << "Current Tick of top Event Object is " << simEventHandler.top().GetCurrentSpeedTick() << std::endl;
 
 }
+
+
 
 /*
 		Resolve the action of an EventObject who's currentSpeedTick is 0 or less, and then reinsert the EO into the PQ.
 		Type of action taken is determined by the type of the Event Object. This only gets called from RunSimulation
-		if the CurrentTickSpeed of the top EventObject in the PQ is 0 or less. 
+		if the CurrentTickSpeed of the top EventObject in the PQ is 0 or less.
 */
 void Simulation::ResolveTopAction() {
-	if (simEventHandler.top().type == 'f') {
-		//resolve the food object's action, which in this case is spawning food in a random location
-		simEventHandler.top().foodProxy->RandomFoodSpawn(randomGenerator);
 
 		//create a copy of the top element of the simEventHandler PQ, so that it can be safely reinserted
 		EventObject tempEO = simEventHandler.top();
 
+		
+		
+		//the number of attemps an EventObject has to succeed in an action. If it fails 10 times in a row, it is skipped, and will 
+		//be reinserted into the queue with it's base speed
+		int numAttempts = 0;
+		
+		//whether or not an event successfully performed its action. If it does, this is switched to true, and the function
+		//should stop calling for any more movement. 
+		bool eventSuccess = false;
+
+		//try to resolve the EventObject's action 10 times. Upon first success, it should end. Therefore, an EventObject should only 
+		//ever take 1 successful action before being reset and reinserted into the queue.
+		while (numAttempts < 10 && eventSuccess == false) {
+			if (tempEO.PerformTypeAction(randomGenerator) == 1) {
+				eventSuccess = true;
+			}
+			
+			++numAttempts;
+		}
+		
+		
+		/**
+		if (tempEO.GetType() == 'e') {
+			std::cout << "Entity " << tempEO.entityProxy->GetEntityID() << " has moved." << std::endl;
+		}
+		if (tempEO.GetType() == 'f') {
+			std::cout << "Food has spawned!" << std::endl;
+		}
+		*/
+
+		//pop the used EventObject off of the front of the PQ
+		simEventHandler.pop();
+
+
 		//reinsert an EventObject into the queue with the same data as it originally had. Note: 
+		simEventHandler.push(tempEO);
 
-
-
-	}
-}
-
+} 

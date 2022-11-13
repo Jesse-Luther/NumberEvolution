@@ -19,10 +19,10 @@ int main()
 	std::random_device rd1;
 	std::mt19937 generator1(rd1());
 
-	Environment environment1(5, 5);
+	Environment environment1(4, 2);
 	environment1.InitEnvironment();
 	Environment* ePointer = &environment1;
-	Simulation sim(ePointer, 4);
+	Simulation sim(ePointer, 4, generator1);
 	//sim.InitializeEntityListBasic();
 	//Entity entity1(0, 0, ePointer, "1", 8);
 	Food foodOb(ePointer, 5);
@@ -35,6 +35,9 @@ int main()
 	//std::cout << test.getCurrentSpeedTick() << std::endl;
 
 	sim.InitializeEntityPointerList();
+
+	sim.ResolveTopAction();
+
 
 	//EventObject ob('e', sim.entityList[0], foodOb);
 	//std::cout << ob.getCurrentSpeedTick();

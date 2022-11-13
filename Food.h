@@ -8,6 +8,8 @@
 //includes
 #include <random>
 
+//class Environment;
+
 class Food {
 public:
 	Food(Environment* environmentO);

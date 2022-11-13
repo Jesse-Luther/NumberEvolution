@@ -12,6 +12,10 @@
 #include <queue>
 
 #include "EventObject.h"
+
+//class Food;
+//class Entity;
+
 class Simulation {
 
 public:
@@ -20,6 +24,7 @@ public:
 	void InitializeEntityListBasic(int numEntities);
 	void InitializeEntityPointerList();
 	void InitializePriorityQueue(const int size);
+
 	//void RunSimulation();
 	//resolve the action of an EventObject who's currentSpeedTick is 0 or less, and then reinsert the EO into the PQ
 	void ResolveTopAction();
