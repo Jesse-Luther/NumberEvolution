@@ -32,6 +32,10 @@ public:
 	int EntityNormalMovement(const char positionChange, const int direction);
 
 	std::string GetEntityID();
+
+	//keeps track of the amount of food this entity has eaten. Eating food is displayed in EntityNormalMovement, and
+	//occurs when an entity moves over food in the environment. 
+	int foodEaten = 0;
 	
 
 private:
