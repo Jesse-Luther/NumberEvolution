@@ -32,8 +32,15 @@ Food::Food(Environment* environmentO, const int spawnRate) : environment{ enviro
 		-posY: Y position on the grid environment (in other words, column number)
 */
 int Food::AddFood(const int posX, const int posY) {
+	
+	//if there is an entity occupying the intended spawn space(represented by a digit), food spawns fails
 	if (isdigit(environment->GetValue(posX, posY)[0])) {
 		std::cout << "There is an entity here" << std::endl;
+		return 0;
+	}
+
+	//if there is already food occupying the intended spawn space(represented by "F", food spawn fails
+	if (environment->GetValue(posX, posY) == "F") {
 		return 0;
 	}
 
