@@ -127,6 +127,12 @@ int Entity::EntityNormalMovement(const char positionChange, const int direction)
 			//first set initial position to "O", then set new position to entityID
 			environment->UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), "O");
 			this -> entityPositionX = x;
+			
+			//check if the entity is about to move over food. If it is, it is considered eating, and will increase foodEaten.
+			if (environment->GetValue(GetEntityXPosition(), GetEntityYPosition()) == "F") {
+				foodEaten++;
+			}
+
 			environment->UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), GetEntityID());
 			environment->PrintEnvironment();
 			return 1;
@@ -144,6 +150,12 @@ int Entity::EntityNormalMovement(const char positionChange, const int direction)
 			//first set initial position to "O", then set new position to entityID
 			environment->UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), "O");
 			this -> entityPositionY = y;
+
+			//check if the entity is about to move over food. If it is, it is considered eating, and will increase foodEaten.
+			if (environment->GetValue(GetEntityXPosition(), GetEntityYPosition()) == "F") {
+				foodEaten++;
+			}
+			
 			environment->UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), GetEntityID());
 			environment->PrintEnvironment();
 			return 1;
