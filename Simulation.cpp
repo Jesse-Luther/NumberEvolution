@@ -65,6 +65,12 @@ void Simulation::InitializePriorityQueue(const int size) {
 
 }
 
+/*
+	Clears all elements of the priority queue SimEventHandler, leaving it empty
+*/
+void Simulation::ClearPriorityQueue() {
+	simEventHandler = std::priority_queue<EventObject, std::vector<EventObject>, std::greater<EventObject> >();
+}
 
 
 /*
@@ -76,11 +82,9 @@ void Simulation::ResolveTopAction() {
 
 		//create a copy of the top element of the simEventHandler PQ, so that it can be safely reinserted
 		EventObject tempEO = simEventHandler.top();
-
-		
 		
 		//the number of attemps an EventObject has to succeed in an action. If it fails 10 times in a row, it is skipped, and will 
-		//be reinserted into the queue with it's base speed
+		//be reinserted into the queue
 		int numAttempts = 0;
 		
 		//whether or not an event successfully performed its action. If it does, this is switched to true, and the function
@@ -92,26 +96,45 @@ void Simulation::ResolveTopAction() {
 		while (numAttempts < 10 && eventSuccess == false) {
 			if (tempEO.PerformTypeAction(randomGenerator) == 1) {
 				eventSuccess = true;
-			}
-			
+			}	
 			++numAttempts;
 		}
 		
-		
-		/**
 		if (tempEO.GetType() == 'e') {
 			std::cout << "Entity " << tempEO.entityProxy->GetEntityID() << " has moved." << std::endl;
 		}
 		if (tempEO.GetType() == 'f') {
 			std::cout << "Food has spawned!" << std::endl;
 		}
-		*/
+		
 
 		//pop the used EventObject off of the front of the PQ
 		simEventHandler.pop();
 
+		//set the currentTickSpeed of the copied object to it's base value
+		tempEO.UpdateCurrentSpeedTick();
 
-		//reinsert an EventObject into the queue with the same data as it originally had. Note: 
+
+		//reinsert an EventObject into the queue with the same data as it originally had.
 		simEventHandler.push(tempEO);
 
 } 
+
+
+void Simulation::RunSimulation(int numTicks) {
+	
+	
+	for (int i = 0; i < numTicks; ++i) {
+		std::cout << "Action " << i + 1 << std::endl;
+		ResolveTopAction();
+
+	}
+
+	ClearPriorityQueue();
+	std::cout << "TEST: " << simEventHandler.top().GetCurrentSpeedTick();
+
+	std::cout << "Entity 1 ate: " << entityList[0].foodEaten << std::endl;
+	std::cout << "Entity 2 ate: " << entityList[1].foodEaten << std::endl;
+	std::cout << "Entity 3 ate: " << entityList[2].foodEaten << std::endl;
+	std::cout << "Entity 4 ate: " << entityList[3].foodEaten << std::endl;
+}

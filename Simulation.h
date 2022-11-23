@@ -21,23 +21,22 @@ class Simulation {
 public:
 
 	Simulation(Environment* environmentO, const int numberOfEntities, std::mt19937 generator);
+
 	void InitializeEntityListBasic(int numEntities);
 	void InitializeEntityPointerList();
 	void InitializePriorityQueue(const int size);
+	void ClearPriorityQueue();
 
-	//void RunSimulation();
 	//resolve the action of an EventObject who's currentSpeedTick is 0 or less, and then reinsert the EO into the PQ
 	void ResolveTopAction();
+	void RunSimulation(int numTicks);
 
-	//void HandleMovements
-	//void UpdatePositionDis()
-	//void createEntity();
 	std::mt19937 randomGenerator;
 
 private:
 	int numEntities;
 	Environment* environment;
-	Food foodCreator{ environment, 1 }; 
+	Food foodCreator{ environment, 5 }; 
 	Entity basicEntity{ environment };
 	//pointers for the Food and Basic entity, to be used in making an EventObject object
 	Food* foodCreatorP = &foodCreator;
