@@ -11,7 +11,7 @@
 #include "Entity.h"
 
 struct EntityData {
-	string id = "0";
+	std::string id = "0";
 
 	int foodEaten = 0;
 
@@ -22,9 +22,13 @@ struct EntityData {
 class TraitInheritance {
 
 public:
+	TraitInheritance();
+
 	//determines if the passed entity has eaten enough food. Returns 1 if it has, and 0 if it has not. Also, 
 	//stores data about the entity
-	int checkSurvival(Entity &entity);
+	int CheckSurvival(Entity entity);
+	void DisplayGenerationData();
+	EntityData tempDataStorage;
 
 private:
 	std::vector<EntityData> generationalDataStorage;
