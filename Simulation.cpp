@@ -10,6 +10,7 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <random>
 
 #include "Simulation.h"
 #include "EventObject.h"
@@ -22,9 +23,12 @@ Simulation::Simulation(Environment* environmentO, const int numberOfEntities, st
 	Initialize the EntityList with a number of entities equal to eCount
 */
 void Simulation::InitializeEntityListBasic(int eCount) {
-	for (int i = 0, j = 0; i < eCount; ++i) {
-		entityList.push_back(Entity(i % environment->GetGridDimensions().GRID_WIDTH, j, environment, std::to_string(i + 1), i + 1));
+	std::uniform_int_distribution<> distribution(1, 10);
 
+	for (int i = 0, j = 0; i < eCount; ++i) {
+		entityList.push_back(Entity(i % environment->GetGridDimensions().GRID_WIDTH, j, environment, std::to_string(i + 1), distribution(randomGenerator)));
+
+		//increment the y value (height) if a row gets filled with entities. That way, entities start spawning on the next row
 		if ((i % environment->GetGridDimensions().GRID_WIDTH) == (environment->GetGridDimensions().GRID_WIDTH - 1)) {
 			++j;
 		}
