@@ -127,14 +127,28 @@ void Simulation::RunSimulation(int numTicks) {
 	for (int i = 0; i < numTicks; ++i) {
 		std::cout << "Action " << i + 1 << std::endl;
 		ResolveTopAction();
-
 	}
 
-	ClearPriorityQueue();
-	std::cout << "TEST: " << simEventHandler.top().GetCurrentSpeedTick();
+	for (int i = 0; i < entityList.size(); ++i) {
+		if (generationHandler.CheckSurvival(entityList[i]) == 1) {
+			std::cout << "entity survived" << std::endl;
+			entityList[i].foodEaten = 0;
+		}
+		else if (generationHandler.CheckSurvival(entityList[i]) == 0) {
+			std::cout << "entity did not survive" << std::endl;
+			entityList[i].foodEaten = 0;
+			++entityList[i].offspringNum;
+			//generate new random speed
+		}
+		else {
+			std::cout << "Error has occurred in Simulation::RunSimulation" << std::endl;
+		}
+	}
 
 	std::cout << "Entity 1 ate: " << entityList[0].foodEaten << std::endl;
 	std::cout << "Entity 2 ate: " << entityList[1].foodEaten << std::endl;
 	std::cout << "Entity 3 ate: " << entityList[2].foodEaten << std::endl;
 	std::cout << "Entity 4 ate: " << entityList[3].foodEaten << std::endl;
+
+	generationHandler.DisplayGenerationData();
 }
