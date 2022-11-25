@@ -203,3 +203,13 @@ int Entity::EntityRandomMovement(std::mt19937& generator) {
 
 
 }
+
+/*
+	Set the base movement speed for the entity
+
+		Parameters:
+		-speed: the speed to set base movement speed to
+*/
+void Entity::SetEntityBaseMovementSpeed(const int speed) {
+	movementSpeed.baseMovementSpeed = speed;
+}

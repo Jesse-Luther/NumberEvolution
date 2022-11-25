@@ -26,6 +26,7 @@ public:
 	int GetEntityXPosition();
 	int GetEntityYPosition();
 	MovementSpeed GetEntityMovementSpeed();
+	void SetEntityBaseMovementSpeed(const int speed);
 	//void SetEntityPosition(const int posX, const int posY); 
 	
 	int EntityRandomMovement(std::mt19937& generator);
