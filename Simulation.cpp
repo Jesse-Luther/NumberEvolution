@@ -78,9 +78,8 @@ void Simulation::ClearPriorityQueue() {
 
 
 /*
-		Resolve the action of an EventObject who's currentSpeedTick is 0 or less, and then reinsert the EO into the PQ.
-		Type of action taken is determined by the type of the Event Object. This only gets called from RunSimulation
-		if the CurrentTickSpeed of the top EventObject in the PQ is 0 or less.
+		Resolve the action of an EventObject who's currentSpeedTick currently the lowest, and then reinsert the EO into the PQ.
+		Type of action taken is determined by the type of the Event Object. 
 */
 void Simulation::ResolveTopAction() {
 
@@ -115,7 +114,7 @@ void Simulation::ResolveTopAction() {
 		//pop the used EventObject off of the front of the PQ
 		simEventHandler.pop();
 
-		//set the currentTickSpeed of the copied object to it's base value
+		//update the EventObject's current tick speed to its new value (previous value + baseValue)
 		tempEO.UpdateCurrentSpeedTick();
 
 
@@ -148,6 +147,10 @@ void Simulation::RunSimulation(int numTicks) {
 			std::cout << "Error has occurred in Simulation::RunSimulation" << std::endl;
 		}
 	}
+
+	std::cout << "O: " << entityList[1].GetEntityMovementSpeed().baseMovementSpeed;
+	entityList[1].SetEntityBaseMovementSpeed(100);
+	std::cout << "N: " << entityList[1].GetEntityMovementSpeed().baseMovementSpeed;
 
 	std::cout << "Entity 1 ate: " << entityList[0].foodEaten << std::endl;
 	std::cout << "Entity 2 ate: " << entityList[1].foodEaten << std::endl;
