@@ -133,11 +133,13 @@ void Simulation::RunSimulation(int numTicks) {
 	}
 
 	for (int i = 0; i < entityList.size(); ++i) {
-		if (generationHandler.CheckSurvival(entityList[i]) == 1) {
+		if (generationHandler.CheckSurvival(entityList[i]) == true) {
+			generationHandler.StoreGenerationData(entityList[i]);
 			std::cout << "entity survived" << std::endl;
 			entityList[i].foodEaten = 0;
 		}
 		else if (generationHandler.CheckSurvival(entityList[i]) == 0) {
+			generationHandler.StoreGenerationData(entityList[i]);
 			std::cout << "entity did not survive" << std::endl;
 			entityList[i].foodEaten = 0;
 			++entityList[i].offspringNum;
@@ -147,15 +149,6 @@ void Simulation::RunSimulation(int numTicks) {
 			std::cout << "Error has occurred in Simulation::RunSimulation" << std::endl;
 		}
 	}
-
-	std::cout << "O: " << entityList[1].GetEntityMovementSpeed().baseMovementSpeed;
-	entityList[1].SetEntityBaseMovementSpeed(100);
-	std::cout << "N: " << entityList[1].GetEntityMovementSpeed().baseMovementSpeed;
-
-	std::cout << "Entity 1 ate: " << entityList[0].foodEaten << std::endl;
-	std::cout << "Entity 2 ate: " << entityList[1].foodEaten << std::endl;
-	std::cout << "Entity 3 ate: " << entityList[2].foodEaten << std::endl;
-	std::cout << "Entity 4 ate: " << entityList[3].foodEaten << std::endl;
 
 	generationHandler.DisplayGenerationData();
 }

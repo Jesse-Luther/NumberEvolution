@@ -15,15 +15,9 @@ TraitInheritance::TraitInheritance() {
 
 }
 
+//store information about an entity in the generationalDataStorage vector, and then use that information to determine if it survived
 int TraitInheritance::CheckSurvival(Entity entity) {
-	tempDataStorage.id = entity.GetEntityID();
-	tempDataStorage.baseSpeed = entity.GetEntityMovementSpeed().baseMovementSpeed;
-	tempDataStorage.foodEaten = entity.foodEaten;
-	tempDataStorage.offSpringNum = entity.offspringNum;
-	
-	generationalDataStorage.push_back(tempDataStorage);
-
-	if (entity.foodEaten < 3) {
+	if (entity.foodEaten < 15) {
 		return 0;
 	}
 	else {
@@ -33,7 +27,7 @@ int TraitInheritance::CheckSurvival(Entity entity) {
 
 void TraitInheritance::DisplayGenerationData() {
 	int size = generationalDataStorage.size();
-	//generation number the data is displaying data for
+	//generation number the function is displaying data for
 	int generationNum = 1;
 
 	for (int i = 0; i < size; ++i) {
@@ -49,5 +43,14 @@ void TraitInheritance::DisplayGenerationData() {
 		std::cout << "Food eaten: " << generationalDataStorage[i].foodEaten << std::endl << std::endl << std::endl;
 	}
 
+}
+
+void TraitInheritance::StoreGenerationData(Entity entity) {
+	tempDataStorage.id = entity.GetEntityID();
+	tempDataStorage.baseSpeed = entity.GetEntityMovementSpeed().baseMovementSpeed;
+	tempDataStorage.foodEaten = entity.foodEaten;
+	tempDataStorage.offSpringNum = entity.offspringNum;
+
+	generationalDataStorage.push_back(tempDataStorage);
 }
 

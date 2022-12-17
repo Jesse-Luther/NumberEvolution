@@ -29,6 +29,7 @@ public:
 	int CheckSurvival(Entity entity);
 	void DisplayGenerationData();
 	EntityData tempDataStorage;
+	void StoreGenerationData(Entity entity);
 
 private:
 	std::vector<EntityData> generationalDataStorage;
