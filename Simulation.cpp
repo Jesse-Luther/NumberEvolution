@@ -143,7 +143,11 @@ void Simulation::RunSimulation(int numTicks) {
 			std::cout << "entity did not survive" << std::endl;
 			entityList[i].foodEaten = 0;
 			++entityList[i].offspringNum;
+
 			//generate new random speed
+			std::uniform_int_distribution<> distribution(1, 10);
+			entityList[i].SetEntityBaseMovementSpeed(distribution(randomGenerator));
+				
 		}
 		else {
 			std::cout << "Error has occurred in Simulation::RunSimulation" << std::endl;
