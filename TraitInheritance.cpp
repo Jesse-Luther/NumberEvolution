@@ -15,24 +15,32 @@ TraitInheritance::TraitInheritance() {
 
 }
 
-//store information about an entity in the generationalDataStorage vector, and then use that information to determine if it survived
-int TraitInheritance::CheckSurvival(Entity entity) {
+//returns true if the entity has eaten the requisite amount of food to survive
+bool TraitInheritance::CheckSurvival(Entity entity) {
 	if (entity.foodEaten < 15) {
-		return 0;
+		return false;
 	}
 	else {
-		return 1;
+		return true;
 	}
 }
 
 void TraitInheritance::DisplayGenerationData() {
 	int size = generationalDataStorage.size();
 	//generation number the function is displaying data for
-	int generationNum = 1;
+	int generationNum = 0;
 
 	for (int i = 0; i < size; ++i) {
+
 		//output new generation number if all the data for the previous generation has been displayed
+		//A new generation can include surviving members of a prior generation, and is ultimately defined 
+		//a new cycle
 		if (generationalDataStorage[i].id == "1") {
+			//if we are displaying data for the entity with id = 1, that means we have reached the start of a new 
+			//generation, and need to display the new generation number (data is displayed for each entity 1 through X, and then 
+			//we move on to the next generation and display 1 through X again).
+			++generationNum;
+			
 			std::cout << std::endl << std::endl;
 			std::cout << "Generation " << generationNum << std::endl;
 		}
