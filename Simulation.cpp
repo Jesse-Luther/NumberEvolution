@@ -127,19 +127,22 @@ void Simulation::ResolveTopAction() {
 void Simulation::RunSimulation(int numTicks) {
 	
 	
+	//perform an amount of actions equal to numTicks. This set of actions constitutes a single cycle
 	for (int i = 0; i < numTicks; ++i) {
 		std::cout << "Action " << i + 1 << std::endl;
 		ResolveTopAction();
 	}
 
 	for (int i = 0; i < entityList.size(); ++i) {
+
+		//in this loop, we start by storing the data of each entity that was in the previous cycle
+		generationHandler.StoreGenerationData(entityList[i]);
+
 		if (generationHandler.CheckSurvival(entityList[i]) == true) {
-			generationHandler.StoreGenerationData(entityList[i]);
 			std::cout << "entity survived" << std::endl;
 			entityList[i].foodEaten = 0;
 		}
 		else if (generationHandler.CheckSurvival(entityList[i]) == 0) {
-			generationHandler.StoreGenerationData(entityList[i]);
 			std::cout << "entity did not survive" << std::endl;
 			entityList[i].foodEaten = 0;
 			++entityList[i].offspringNum;
