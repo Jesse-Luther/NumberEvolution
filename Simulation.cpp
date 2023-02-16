@@ -126,36 +126,43 @@ void Simulation::ResolveTopAction() {
 
 void Simulation::RunSimulation(int numTicks) {
 	
-	
-	//perform an amount of actions equal to numTicks. This set of actions constitutes a single cycle
-	for (int i = 0; i < numTicks; ++i) {
-		std::cout << "Action " << i + 1 << std::endl;
-		ResolveTopAction();
+	for (int j = 0; j < 1; ++j) {
+
+
+		//perform an amount of actions equal to numTicks. This set of actions constitutes a single cycle
+		for (int i = 0; i < numTicks; ++i) {
+			std::cout << "Action " << i + 1 << std::endl;
+			ResolveTopAction();
+		}
+
+		for (int i = 0; i < entityList.size(); ++i) {
+
+			//in this loop, we start by storing the data of each entity that was in the previous cycle
+			generationHandler.StoreGenerationData(entityList[i]);
+
+			if (generationHandler.CheckSurvival(entityList[i]) == true) {
+				std::cout << "entity survived" << std::endl;
+				entityList[i].foodEaten = 0;
+			}
+			else if (generationHandler.CheckSurvival(entityList[i]) == 0) {
+				std::cout << "entity did not survive" << std::endl;
+				entityList[i].foodEaten = 0;
+				++entityList[i].offspringNum;
+
+				//generate new random speed
+				std::uniform_int_distribution<> distribution(1, 10);
+				entityList[i].SetEntityBaseMovementSpeed(distribution(randomGenerator));
+
+			}
+			else {
+				std::cout << "Error has occurred in Simulation::RunSimulation" << std::endl;
+			}
+		}
+
 	}
 
-	for (int i = 0; i < entityList.size(); ++i) {
-
-		//in this loop, we start by storing the data of each entity that was in the previous cycle
-		generationHandler.StoreGenerationData(entityList[i]);
-
-		if (generationHandler.CheckSurvival(entityList[i]) == true) {
-			std::cout << "entity survived" << std::endl;
-			entityList[i].foodEaten = 0;
-		}
-		else if (generationHandler.CheckSurvival(entityList[i]) == 0) {
-			std::cout << "entity did not survive" << std::endl;
-			entityList[i].foodEaten = 0;
-			++entityList[i].offspringNum;
-
-			//generate new random speed
-			std::uniform_int_distribution<> distribution(1, 10);
-			entityList[i].SetEntityBaseMovementSpeed(distribution(randomGenerator));
-				
-		}
-		else {
-			std::cout << "Error has occurred in Simulation::RunSimulation" << std::endl;
-		}
-	}
-
+	//display the data for all entities that were part of the simulation
 	generationHandler.DisplayGenerationData();
 }
+
+
