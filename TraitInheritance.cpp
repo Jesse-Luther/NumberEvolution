@@ -33,7 +33,7 @@ void TraitInheritance::DisplayGenerationData() {
 	for (int i = 0; i < size; ++i) {
 
 		//output new generation number if all the data for the previous generation has been displayed
-		//A new generation can include surviving members of a prior generation, and is ultimately defined 
+		//A new generation can include surviving members of a prior generation, and is ultimately defined as
 		//a new cycle
 		if (generationalDataStorage[i].id == "1") {
 			//if we are displaying data for the entity with id = 1, that means we have reached the start of a new 

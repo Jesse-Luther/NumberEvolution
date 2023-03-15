@@ -26,8 +26,9 @@ public:
 
 	//determines if the passed entity has eaten enough food. Returns 1 if it has, and 0 if it has not. Also, 
 	//stores data about the entity
-	int CheckSurvival(Entity entity);
+	bool CheckSurvival(Entity entity);
 	void DisplayGenerationData();
+
 	EntityData tempDataStorage;
 	void StoreGenerationData(Entity entity);
 

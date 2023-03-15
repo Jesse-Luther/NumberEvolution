@@ -67,7 +67,7 @@ int EventObject::PerformTypeAction(std::mt19937& generator) {
 }
 
 /*
-	reset the currentSpeedTick value to the proxy object type's base value
+	adds base value to currentSpeedTick value
 */
 void EventObject::UpdateCurrentSpeedTick() {
 	if (type == 'f') {

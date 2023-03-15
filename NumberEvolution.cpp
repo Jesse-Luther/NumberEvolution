@@ -11,6 +11,7 @@
 #include "Food.cpp"
 #include "Simulation.cpp"
 #include "EventObject.cpp"
+#include "TraitInheritance.cpp"
 
 
 
@@ -19,7 +20,7 @@ int main()
 	std::random_device rd1;
 	std::mt19937 generator1(rd1());
 
-	Environment environment1(4, 2);
+	Environment environment1(5, 5);
 	environment1.InitEnvironment();
 	Environment* ePointer = &environment1;
 	Simulation sim(ePointer, 4, generator1);
@@ -34,9 +35,10 @@ int main()
 	//EventObject test = sim.simEventHandler.top();
 	//std::cout << test.getCurrentSpeedTick() << std::endl;
 
-	sim.InitializeEntityPointerList();
 
-	sim.ResolveTopAction();
+
+	//sim.ResolveTopAction();
+	sim.RunSimulation(500, 5);
 
 
 	//EventObject ob('e', sim.entityList[0], foodOb);

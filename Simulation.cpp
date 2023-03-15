@@ -124,9 +124,9 @@ void Simulation::ResolveTopAction() {
 } 
 
 
-void Simulation::RunSimulation(int numTicks) {
+void Simulation::RunSimulation(int numTicks, int numGens) {
 	
-	for (int j = 0; j < 1; ++j) {
+	for (int j = 0; j < numGens; ++j) {
 
 
 		//perform an amount of actions equal to numTicks. This set of actions constitutes a single cycle

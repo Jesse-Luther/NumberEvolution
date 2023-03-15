@@ -12,6 +12,7 @@
 #include <queue>
 
 #include "EventObject.h"
+#include "TraitInheritance.h"
 
 //class Food;
 //class Entity;
@@ -29,9 +30,10 @@ public:
 
 	//resolve the action of an EventObject who's currentSpeedTick is 0 or less, and then reinsert the EO into the PQ
 	void ResolveTopAction();
-	void RunSimulation(int numTicks);
+	void RunSimulation(int numTicks, int numGens);
 
 	std::mt19937 randomGenerator;
+	TraitInheritance generationHandler;
 
 private:
 	int numEntities;
