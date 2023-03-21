@@ -45,7 +45,7 @@ int Food::AddFood(const int posX, const int posY) {
 	}
 
 	environment->UpdateEnvironment(posX, posY, "F");
-	environment->PrintEnvironment();
+	//environment->PrintEnvironment();
 	return 1;
 }
 

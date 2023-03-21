@@ -134,7 +134,7 @@ int Entity::EntityNormalMovement(const char positionChange, const int direction)
 			}
 
 			environment->UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), GetEntityID());
-			environment->PrintEnvironment();
+			//environment->PrintEnvironment();
 			return 1;
 		}
 	}
@@ -157,7 +157,7 @@ int Entity::EntityNormalMovement(const char positionChange, const int direction)
 			}
 			
 			environment->UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), GetEntityID());
-			environment->PrintEnvironment();
+			//environment->PrintEnvironment();
 			return 1;
 		}
 	}
