@@ -103,11 +103,18 @@ void Simulation::ResolveTopAction() {
 			++numAttempts;
 		}
 		
-		if (tempEO.GetType() == 'e') {
+		//if the event happened before reaching more than 10 attemts, the corresponding text is output
+		if (tempEO.GetType() == 'e' && eventSuccess == true) {
 			std::cout << "Entity " << tempEO.entityProxy->GetEntityID() << " has moved." << std::endl;
 		}
-		if (tempEO.GetType() == 'f') {
+		if (tempEO.GetType() == 'f' && eventSuccess == true) {
 			std::cout << "Food has spawned!" << std::endl;
+		}
+		if (tempEO.GetType() == 'e' && eventSuccess == false) {
+			std::cout << "Entity " << tempEO.entityProxy->GetEntityID() << " has failed to move." << std::endl;
+		}
+		if (tempEO.GetType() == 'f' && eventSuccess == false) {
+			std::cout << "Food has failed to spawn." << std::endl;
 		}
 		
 
