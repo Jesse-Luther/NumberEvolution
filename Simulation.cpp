@@ -135,6 +135,7 @@ void Simulation::RunSimulation(int numTicks, int numGens) {
 			ResolveTopAction();
 		}
 
+
 		for (int i = 0; i < entityList.size(); ++i) {
 
 			//in this loop, we start by storing the data of each entity that was in the previous cycle

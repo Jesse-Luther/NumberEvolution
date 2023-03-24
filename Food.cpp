@@ -35,7 +35,7 @@ int Food::AddFood(const int posX, const int posY) {
 	
 	//if there is an entity occupying the intended spawn space(represented by a digit), food spawns fails
 	if (isdigit(environment->GetValue(posX, posY)[0])) {
-		std::cout << "There is an entity here" << std::endl;
+		//std::cout << "There is an entity here" << std::endl;
 		return 0;
 	}
 
@@ -64,8 +64,8 @@ int Food::RandomFoodSpawn(std::mt19937 &generator) {
 	int xDim = randLocation % environment->GetGridDimensions().GRID_WIDTH;
 	int yDim = floor(randLocation / environment->GetGridDimensions().GRID_WIDTH);
 
-	std::cout << "Grid size is: " << gridSize << std::endl;
-	std::cout << "RandLocation is: " << randLocation << std::endl;
+	//std::cout << "Grid size is: " << gridSize << std::endl;
+	//std::cout << "RandLocation is: " << randLocation << std::endl;
 	std::cout << "Food was added at X: " << xDim << " and Y: " << yDim << std::endl;
 	int successIndicator = AddFood(xDim, yDim);
 

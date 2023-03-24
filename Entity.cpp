@@ -53,17 +53,17 @@ Entity::Entity(const int posX, const int posY, Environment* environmentO, const 
 */
 bool Entity::IsValidPosition(int posX, int posY) {
 	if (posX < 0 || posX >= this->environment->GetGridDimensions().GRID_WIDTH) {
-		std::cout << "X position error" << std::endl;
+		//std::cout << "X position error" << std::endl;
 		return false;
 	}
 	if (posY < 0 || posY >= this->environment->GetGridDimensions().GRID_HEIGHT) {
-		std::cout << "Y position error" << std::endl;
+		//std::cout << "Y position error" << std::endl;
 		return false;
 	}
 	//get the current grid value at the location. If it contains a digit, it is an entity, 
 	//and therefore, the position is occupied and not a valid place to go
 	if (isdigit(environment->GetValue(posX, posY)[0])) {
-		std::cout << "Location Occupied error" << std::endl;
+		//std::cout << "Location Occupied error" << std::endl;
 		return false;
 	}
 
@@ -119,7 +119,7 @@ int Entity::EntityNormalMovement(const char positionChange, const int direction)
 	if (positionChange == 'x') {
 		x = x + direction;
 		if (IsValidPosition(x, y) == false) {
-			std::cout << "That is not a valid movement" << std::endl;
+			//std::cout << "That is not a valid movement" << std::endl;
 			return 0;
 		}
 
@@ -142,7 +142,7 @@ int Entity::EntityNormalMovement(const char positionChange, const int direction)
 	if (positionChange == 'y') {
 		y = y + direction;
 		if (IsValidPosition(x, y) == false) {
-			std::cout << "That is not a valid movement" << std::endl;
+			//std::cout << "That is not a valid movement" << std::endl;
 			return 0;
 		}
 
@@ -196,7 +196,7 @@ int Entity::EntityRandomMovement(std::mt19937& generator) {
 	}
 
 	//make random movement, with movementIndicator to check if it was successful
-	std::cout << "Rand1 is " << rand1 << " and Rand2 is " << rand2 << "." << std::endl;
+	//std::cout << "Rand1 is " << rand1 << " and Rand2 is " << rand2 << "." << std::endl;
 	int movementIndicator = EntityNormalMovement(positionType, rand2);
 	
 	return movementIndicator;
