@@ -124,17 +124,22 @@ int Entity::EntityNormalMovement(const char positionChange, const int direction)
 		}
 
 		else {
-			//first set initial position to "O", then set new position to entityID
+			//first set initial position to "O", 
 			environment->UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), "O");
 			this -> entityPositionX = x;
+
+			//output text indicating the new position that the entity will exist in
+			std::cout << "Entity " << this->GetEntityID() << " has moved to X: " << this->GetEntityXPosition() << ", Y: " << this->GetEntityYPosition() << std::endl;
 			
 			//check if the entity is about to move over food. If it is, it is considered eating, and will increase foodEaten.
 			if (environment->GetValue(GetEntityXPosition(), GetEntityYPosition()) == "F") {
 				foodEaten++;
+				std::cout << "Entity " << this->GetEntityID() << " has eaten food!" << std::endl;
 			}
 
+			//set new position value to the entity's ID, and complete the "move"
 			environment->UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), GetEntityID());
-			std::cout << "Entity " << this->GetEntityID() << " has moved to X: " << this->GetEntityXPosition() << ", Y: " << this->GetEntityYPosition() << std::endl;
+			
 			environment->PrintEnvironment();
 			return 1;
 		}
@@ -148,17 +153,22 @@ int Entity::EntityNormalMovement(const char positionChange, const int direction)
 		}
 
 		else {
-			//first set initial position to "O", then set new position to entityID
+			//first set initial position to "O"
 			environment->UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), "O");
 			this -> entityPositionY = y;
+
+			//output text indicating the new position that the entity will exist in
+			std::cout << "Entity " << this->GetEntityID() << " has moved to X: " << this->GetEntityXPosition() << ", Y: " << this->GetEntityYPosition() << std::endl;
 
 			//check if the entity is about to move over food. If it is, it is considered eating, and will increase foodEaten.
 			if (environment->GetValue(GetEntityXPosition(), GetEntityYPosition()) == "F") {
 				foodEaten++;
+				std::cout << "Entity " << this->GetEntityID() << " has eaten food!" << std::endl;
 			}
 			
+			//set new position value to the entity's ID, and complete the "move"
 			environment->UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), GetEntityID());
-			std::cout << "Entity " << this->GetEntityID() << " has moved to X: " << this->GetEntityXPosition() << ", Y: " << this->GetEntityYPosition() << std::endl;
+			
 			environment->PrintEnvironment();
 			return 1;
 		}
