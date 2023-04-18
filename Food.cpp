@@ -44,8 +44,9 @@ int Food::AddFood(const int posX, const int posY) {
 		return 0;
 	}
 
+	std::cout << "Food was added at X: " << posX << " and Y: " << posY << std::endl;
 	environment->UpdateEnvironment(posX, posY, "F");
-	//environment->PrintEnvironment();
+	environment->PrintEnvironment();
 	return 1;
 }
 
@@ -66,7 +67,7 @@ int Food::RandomFoodSpawn(std::mt19937 &generator) {
 
 	//std::cout << "Grid size is: " << gridSize << std::endl;
 	//std::cout << "RandLocation is: " << randLocation << std::endl;
-	std::cout << "Food was added at X: " << xDim << " and Y: " << yDim << std::endl;
+	
 	int successIndicator = AddFood(xDim, yDim);
 
 	return successIndicator;

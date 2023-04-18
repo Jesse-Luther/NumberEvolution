@@ -134,7 +134,8 @@ int Entity::EntityNormalMovement(const char positionChange, const int direction)
 			}
 
 			environment->UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), GetEntityID());
-			//environment->PrintEnvironment();
+			std::cout << "Entity " << this->GetEntityID() << " has moved to X: " << this->GetEntityXPosition() << ", Y: " << this->GetEntityYPosition() << std::endl;
+			environment->PrintEnvironment();
 			return 1;
 		}
 	}
@@ -157,7 +158,8 @@ int Entity::EntityNormalMovement(const char positionChange, const int direction)
 			}
 			
 			environment->UpdateEnvironment(GetEntityXPosition(), GetEntityYPosition(), GetEntityID());
-			//environment->PrintEnvironment();
+			std::cout << "Entity " << this->GetEntityID() << " has moved to X: " << this->GetEntityXPosition() << ", Y: " << this->GetEntityYPosition() << std::endl;
+			environment->PrintEnvironment();
 			return 1;
 		}
 	}

@@ -102,14 +102,8 @@ void Simulation::ResolveTopAction() {
 			}	
 			++numAttempts;
 		}
-		
-		//if the event happened before reaching more than 10 attemts, the corresponding text is output
-		if (tempEO.GetType() == 'e' && eventSuccess == true) {
-			std::cout << "Entity " << tempEO.entityProxy->GetEntityID() << " has moved." << std::endl;
-		}
-		if (tempEO.GetType() == 'f' && eventSuccess == true) {
-			std::cout << "Food has spawned!" << std::endl;
-		}
+
+		//if the event didn't occur within 10 attempts, a corresponding failure message is displayed
 		if (tempEO.GetType() == 'e' && eventSuccess == false) {
 			std::cout << "Entity " << tempEO.entityProxy->GetEntityID() << " has failed to move." << std::endl;
 		}
@@ -138,6 +132,7 @@ void Simulation::RunSimulation(int numTicks, int numGens) {
 
 		//perform an amount of actions equal to numTicks. This set of actions constitutes a single cycle
 		for (int i = 0; i < numTicks; ++i) {
+			std::cout << std::endl;
 			std::cout << "Action " << i + 1 << std::endl;
 			ResolveTopAction();
 		}
