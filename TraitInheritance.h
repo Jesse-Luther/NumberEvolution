@@ -15,7 +15,7 @@ struct EntityData {
 
 	int foodEaten = 0;
 
-	int offSpringNum = 0;
+	int uniqueLins = 0;
 	int baseSpeed = 0;
 };
 

@@ -50,7 +50,7 @@ void TraitInheritance::DisplayGenerationData() {
 		}
 
 		std::cout << "Data for entity in this slot " << generationalDataStorage[i].id << ": " << std::endl;
-		std::cout << "Number of unique lineages in this slot: " << generationalDataStorage[i].offSpringNum << std::endl;
+		std::cout << "Number of unique lineages in this slot: " << generationalDataStorage[i].uniqueLins << std::endl;
 		std::cout << "Base movement speed: " << generationalDataStorage[i].baseSpeed << std::endl;
 		std::cout << "Food eaten: " << generationalDataStorage[i].foodEaten << std::endl;
 		if (generationalDataStorage[i].foodEaten >= foodRequired) {
@@ -67,7 +67,7 @@ void TraitInheritance::StoreGenerationData(Entity entity) {
 	tempDataStorage.id = entity.GetEntityID();
 	tempDataStorage.baseSpeed = entity.GetEntityMovementSpeed().baseMovementSpeed;
 	tempDataStorage.foodEaten = entity.foodEaten;
-	tempDataStorage.offSpringNum = entity.offspringNum;
+	tempDataStorage.uniqueLins = entity.uniqueLins;
 
 	generationalDataStorage.push_back(tempDataStorage);
 }

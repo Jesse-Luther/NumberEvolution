@@ -38,10 +38,8 @@ public:
 	//occurs when an entity moves over food in the environment. 
 	int foodEaten = 0;
 	
-	//keeps track of how many failed generations have passed since the initial entity was spawned in. For the default 
-	//scenario, if an entity fails to eat enough food, its generation will end, and it will produce offspring with new
-	//speed values.
-	int offspringNum = 0;
+	//represents the number of unique lineages that have occupied the given slot (which can also be viewed as the number of times an entity has not survived in the slot + 1)
+	int uniqueLins = 1;
 	
 
 private:

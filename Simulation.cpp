@@ -150,7 +150,7 @@ void Simulation::RunSimulation(int numTicks, int numGens) {
 			else if (generationHandler.CheckSurvival(entityList[i]) == 0) {
 				std::cout << "entity did not survive" << std::endl;
 				entityList[i].foodEaten = 0;
-				++entityList[i].offspringNum;
+				++entityList[i].uniqueLins;
 
 				//generate new random speed
 				std::uniform_int_distribution<> distribution(1, 10);
