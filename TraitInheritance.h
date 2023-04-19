@@ -34,5 +34,6 @@ public:
 
 private:
 	std::vector<EntityData> generationalDataStorage;
+	int foodRequired = 15;
 
 };

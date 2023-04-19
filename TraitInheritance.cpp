@@ -17,7 +17,7 @@ TraitInheritance::TraitInheritance() {
 
 //returns true if the entity has eaten the requisite amount of food to survive
 bool TraitInheritance::CheckSurvival(Entity entity) {
-	if (entity.foodEaten < 15) {
+	if (entity.foodEaten < foodRequired) {
 		return false;
 	}
 	else {
@@ -30,6 +30,9 @@ void TraitInheritance::DisplayGenerationData() {
 	//generation number the function is displaying data for
 	int generationNum = 0;
 
+	std::cout << std::endl << std::endl << std::endl;
+	std::cout << "Food required to survive: " << foodRequired << std::endl;
+
 	for (int i = 0; i < size; ++i) {
 
 		//output new generation number if all the data for the previous generation has been displayed
@@ -41,14 +44,21 @@ void TraitInheritance::DisplayGenerationData() {
 			//we move on to the next generation and display 1 through X again).
 			++generationNum;
 			
-			std::cout << std::endl << std::endl;
+			std::cout << std::endl;
 			std::cout << "Generation " << generationNum << std::endl;
+			std::cout << "-----------------------------------------" << std::endl;
 		}
 
-		std::cout << "Data for entity line " << generationalDataStorage[i].id << ": " << std::endl;
-		std::cout << "Offspring number: " << generationalDataStorage[i].offSpringNum << std::endl;
+		std::cout << "Data for entity in slot " << generationalDataStorage[i].id << ": " << std::endl;
+		std::cout << "Number of unique lineages in this generation: " << generationalDataStorage[i].offSpringNum << std::endl;
 		std::cout << "Base movement speed: " << generationalDataStorage[i].baseSpeed << std::endl;
-		std::cout << "Food eaten: " << generationalDataStorage[i].foodEaten << std::endl << std::endl << std::endl;
+		std::cout << "Food eaten: " << generationalDataStorage[i].foodEaten << std::endl;
+		if (generationalDataStorage[i].foodEaten >= foodRequired) {
+			std::cout << "Entity ate enough food to survive." << std::endl << std::endl << std::endl;
+		}
+		else {
+			std::cout << "Entity did not eat enough food to survive." << std::endl << std::endl << std::endl;
+		}
 	}
 
 }
