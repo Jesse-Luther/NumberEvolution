@@ -49,8 +49,8 @@ void TraitInheritance::DisplayGenerationData() {
 			std::cout << "-----------------------------------------" << std::endl;
 		}
 
-		std::cout << "Data for entity in slot " << generationalDataStorage[i].id << ": " << std::endl;
-		std::cout << "Number of unique lineages in this generation: " << generationalDataStorage[i].offSpringNum << std::endl;
+		std::cout << "Data for entity in this slot " << generationalDataStorage[i].id << ": " << std::endl;
+		std::cout << "Number of unique lineages in this slot: " << generationalDataStorage[i].offSpringNum << std::endl;
 		std::cout << "Base movement speed: " << generationalDataStorage[i].baseSpeed << std::endl;
 		std::cout << "Food eaten: " << generationalDataStorage[i].foodEaten << std::endl;
 		if (generationalDataStorage[i].foodEaten >= foodRequired) {
